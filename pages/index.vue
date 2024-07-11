@@ -3,29 +3,47 @@
 		<h1 align="center">Hero 1</h1>
 
 		<div class="absolute inset-0 flex items-center justify-center gap-10">
-			<div gsap="hero-white_bg" class="absolute h-screen w-full bg-white"></div>
+			<div gsap="hero-white_bg" class="absolute h-screen w-full bg-white">
+				<div class="container mx-auto mt-40 space-y-8 px-8">
+					<h1 align="center" class="text-6xl font-black">
+						Industries I specialize in
+					</h1>
+					<p align="center">
+						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea unde
+						aperiam ratione sit, doloremque et dolorem? Tempora consequatur
+						odit, quaerat dolore, earum ipsa fuga consectetur asperiores enim
+						quisquam ea aperiam. Lorem ipsum dolor sit amet consectetur
+						adipisicing elit. Distinctio omnis dolor, similique consectetur
+						expedita fuga doloribus at pariatur sequi odio quia laudantium nemo
+						enim ea, repellat quaerat itaque quibusdam obcaecati?
+					</p>
+				</div>
+			</div>
 
 			<div
 				gsap="hero-card_hidden"
-				class="z-10 h-[360px] w-1/5 rounded-lg bg-gray-200 opacity-100"
+				class="z-10 h-[360px] w-1/5 translate-y-40 rounded-lg bg-gray-200 opacity-100"
 			></div>
 			<div
 				gsap="hero-card"
-				class="z-10 h-[500px] w-1/5 rounded-lg border-2 border-gray-400 bg-gray-400 bg-opacity-20"
+				class="z-10 h-[400px] w-1/4 translate-y-40 rounded-lg border-2 border-gray-400 bg-gray-400 bg-opacity-20"
 			></div>
 			<div
 				gsap="hero-card_hidden"
-				class="z-10 h-[360px] w-1/5 rounded-lg bg-gray-200 opacity-100"
+				class="z-10 h-[360px] w-1/5 translate-y-40 rounded-lg bg-gray-200 opacity-100"
 			></div>
 		</div>
 	</section>
 
-	<section class="hero2 h-screen max-h-screen bg-red-300">Hero 2</section>
+	<section class="hero2 h-screen max-h-screen bg-red-300">Section 2</section>
 </template>
 
 <script setup>
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useSetSeoMeta } from "~/data/SEO";
+
+useSetSeoMeta();
 
 onMounted(() => {
 	gsap.registerPlugin(ScrollTrigger);
@@ -50,11 +68,13 @@ onMounted(() => {
 			borderRadius: "0.5rem",
 		})
 		.from(`[gsap="hero-card"]`, {
+			translateY: 0,
 			width: "75%",
+			height: "500px",
 			ease: "sine",
 		})
 		.from(`[gsap="hero-card_hidden"]`, {
-			y: "20%",
+			y: 0,
 			opacity: 0,
 			ease: "sine",
 		});
