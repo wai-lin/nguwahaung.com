@@ -2,7 +2,7 @@
 useHead({
 	htmlAttrs: {
 		lang: "en",
-		class: "font-body",
+		class: "font-body text-slate-900",
 	},
 	titleTemplate(titleChunk) {
 		if (titleChunk) return `${titleChunk} - Ngu Wah Aung`;
@@ -18,7 +18,5 @@ useHead({
 </script>
 
 <template>
-	<NuxtLayout>
-		<NuxtPage />
-	</NuxtLayout>
+	<NuxtPage />
 </template>
