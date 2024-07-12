@@ -4,33 +4,33 @@
 
 		<div class="absolute inset-0 flex items-center justify-center gap-10">
 			<div gsap="hero-white_bg" class="absolute h-screen w-full bg-white">
-				<div class="container mx-auto mt-40 space-y-8 px-8">
-					<h1 align="center" class="text-6xl font-black">
+				<div
+					gsap="hero-cotent"
+					class="container mx-auto mt-8 space-y-8 px-4 opacity-100 lg:mt-40 lg:px-8"
+				>
+					<h1 align="center" class="text-3xl font-black lg:text-6xl">
 						Industries I specialize in
 					</h1>
 					<p align="center">
 						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea unde
 						aperiam ratione sit, doloremque et dolorem? Tempora consequatur
 						odit, quaerat dolore, earum ipsa fuga consectetur asperiores enim
-						quisquam ea aperiam. Lorem ipsum dolor sit amet consectetur
-						adipisicing elit. Distinctio omnis dolor, similique consectetur
-						expedita fuga doloribus at pariatur sequi odio quia laudantium nemo
-						enim ea, repellat quaerat itaque quibusdam obcaecati?
+						quisquam ea aperiam.
 					</p>
 				</div>
 			</div>
 
 			<div
 				gsap="hero-card_hidden"
-				class="z-10 h-[360px] w-1/5 translate-y-40 rounded-lg bg-gray-200 opacity-100"
+				class="z-10 hidden h-[320px] w-1/5 translate-y-40 rounded-lg bg-gray-200 opacity-100 lg:block"
 			></div>
 			<div
 				gsap="hero-card"
-				class="z-10 h-[400px] w-1/4 translate-y-40 rounded-lg border-2 border-gray-400 bg-gray-400 bg-opacity-20"
+				class="z-10 h-[280px] w-4/5 translate-y-36 rounded-lg border-2 border-gray-400 bg-gray-400 bg-opacity-20 lg:h-[360px] lg:w-[400px] lg:translate-y-44"
 			></div>
 			<div
 				gsap="hero-card_hidden"
-				class="z-10 h-[360px] w-1/5 translate-y-40 rounded-lg bg-gray-200 opacity-100"
+				class="z-10 hidden h-[320px] w-1/5 translate-y-40 rounded-lg bg-gray-200 opacity-100 lg:block"
 			></div>
 		</div>
 	</section>
@@ -65,7 +65,7 @@ onMounted(() => {
 			height: "500px",
 			transformOrigin: "center center",
 			ease: "sine",
-			borderRadius: "0.5rem",
+			borderRadius: "0.75rem",
 		})
 		.from(`[gsap="hero-card"]`, {
 			translateY: 0,
