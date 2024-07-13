@@ -3,6 +3,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HeroSection } from "~/data/HeroSection";
 import { Industries } from "~/data/Industries";
+import { useSetSeoMeta } from "~/data/SEO";
+
+useSetSeoMeta();
 
 const prefersReducedMotion = ref(false);
 
@@ -82,16 +85,16 @@ onMounted(() => {
 
 		<div class="lg:pt-30 absolute inset-0 pt-20">
 			<h6
-				class="text-title-lg container mx-auto mb-8 px-4 font-bold lg:mb-10 lg:px-10"
+				class="container mx-auto mb-8 px-4 text-title-lg font-bold lg:mb-10 lg:px-10"
 			>
 				{{ HeroSection.title }}
 			</h6>
 
-			<div gsap="reveal" class="bg-light absolute inset-0 scale-0">
+			<div gsap="reveal" class="absolute inset-0 scale-0 bg-light">
 				<div class="container mx-auto py-20">
 					<h1
 						gsap="reveal-2"
-						class="text-header mb-4 text-center font-bold leading-tight opacity-0"
+						class="mb-4 text-center text-header font-bold leading-tight opacity-0"
 					>
 						{{ Industries.title }}
 					</h1>
@@ -130,7 +133,7 @@ onMounted(() => {
 				class="gradient-border-mask mx-auto h-[fit-content] w-4/5 p-10 backdrop-blur-sm lg:w-3/4 lg:p-20"
 			>
 				<h1
-					class="text-title-lg text-light lg:text-header lg:text-dark font-bold lg:leading-none"
+					class="text-title-lg font-bold text-light lg:text-header lg:leading-none lg:text-dark"
 				>
 					{{ HeroSection.focusContent }}
 				</h1>
@@ -138,8 +141,8 @@ onMounted(() => {
 		</div>
 	</section>
 
-	<section class="bg-light sticky px-4 py-10 lg:hidden">
-		<h1 class="text-title-lg pb-4 font-bold leading-none">
+	<section class="sticky bg-light px-4 py-10 lg:hidden">
+		<h1 class="pb-4 text-title-lg font-bold leading-none">
 			{{ Industries.title }}
 		</h1>
 		<p class="mb-4">
@@ -156,7 +159,7 @@ onMounted(() => {
 		</div>
 	</section>
 
-	<section class="bg-primary-400 h-screen w-screen"></section>
+	<section class="h-screen w-screen bg-primary-400"></section>
 
 	<Footer />
 </template>
