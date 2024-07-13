@@ -2,7 +2,7 @@
 useHead({
 	htmlAttrs: {
 		lang: "en",
-		class: "font-body text-slate-900",
+		class: "font-body text-dark",
 	},
 	titleTemplate(titleChunk) {
 		if (titleChunk) return `${titleChunk} - Ngu Wah Aung`;
