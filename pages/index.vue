@@ -1,41 +1,194 @@
-<template>
-	<section gsap="hero" class="h-screen max-h-screen bg-yellow-200">
-		<h1 align="center">Hero 1</h1>
+<script setup lang="ts">
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { HeroSection } from "~/data/HeroSection";
+import { Industries } from "~/data/Industries";
+import { useSetSeoMeta } from "~/data/SEO";
 
-		<div class="absolute inset-0 flex items-center justify-center gap-10">
-			<div gsap="hero-white_bg" class="absolute h-screen w-full bg-white">
-				<div class="container mx-auto mt-40 space-y-8 px-8">
-					<h1 align="center" class="text-6xl font-black">
-						Industries I specialize in
+useSetSeoMeta();
+
+const prefersReducedMotion = ref(false);
+
+const projectImages = [
+	"https://uizard.io/static/9b3b663d3ac0e2bdc1403bdc496bb3ae/0cfa7/6b04c1f699eb8a263e99a78da374d2e152a78b28-1440x835.webp",
+	"https://uizard.io/static/59d2127f1710ac592be41e29fbe77e71/0cfa7/8d873c59ca702967ba226106db29f25ca4c74bc5-1440x835.webp",
+	"https://uizard.io/static/5d4306fb31cb1acd99e583551daf4ceb/0cfa7/2f0a67de75a2983c83a4ae13c8a588f33749722a-1440x835.webp",
+];
+
+function revealImage(index) {
+	document.querySelector(`#slide-${index}`).classList.add("active");
+}
+
+function hideImage(index) {
+	document
+		.querySelector(`#slide-${index}`)
+		.classList.replace("active", "deactive");
+	setTimeout(function () {
+		document.querySelector(`#slide-${index}`).classList.remove("deactive");
+	}, 600);
+}
+
+onMounted(() => {
+	// Register plugins first
+	gsap.registerPlugin(ScrollTrigger);
+
+	// Trigger animations based on Media Query
+	type MediaConditions = {
+		isSmallScreen: boolean;
+		isLargeScreen: boolean;
+		reducedAnimation: boolean;
+	};
+	const media = gsap.matchMedia();
+	media.add(
+		{
+			isSmallScreen: "(max-width: 1023px)",
+			isLargeScreen: "(min-width: 1024px)",
+			reducedAnimation: "(prefers-reduced-motion: no-preference)",
+		},
+		(ctx) => {
+			const { isSmallScreen, isLargeScreen, reducedAnimation } =
+				ctx.conditions as MediaConditions;
+
+			// const noAnimation = reducedAnimation || prefersReducedMotion.value;
+			// if (noAnimation) return;
+
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: `[gsap="scroll-trigger"]`,
+					pin: true,
+					scrub: true,
+					start: "top top",
+					end: isSmallScreen ? "end end" : "+=120%",
+				},
+			});
+
+			tl.to(`[gsap="reveal"]`, {
+				transformOrigin: "center",
+				scale: isLargeScreen ? 1 : "",
+				height: isLargeScreen ? "100%" : "",
+				ease: "sine.in",
+			})
+				.to(`[gsap="gradient-card"]`, {
+					translateY: isLargeScreen ? 20 : "",
+					opacity: isLargeScreen ? 0 : "",
+					scale: isLargeScreen ? 0.5 : 1,
+					zIndex: 0,
+					ease: "sine.in",
+				})
+				.from(`[gsap="profession-card"]`, {
+					scale: 0,
+					ease: "sine.out",
+				})
+				.to(`[gsap="reveal-2"]`, {
+					opacity: isLargeScreen ? 1 : "",
+					ease: "sine.in",
+				});
+		},
+	);
+
+	gsap.set(".flair", { xPercent: -50, yPercent: -50 });
+
+	let xTo = gsap.quickTo(".flair", "x", { duration: 0.6, ease: "power3" }),
+		yTo = gsap.quickTo(".flair", "y", { duration: 0.6, ease: "power3" });
+
+	window.addEventListener("mousemove", (e) => {
+		xTo(e.clientX);
+		yTo(e.clientY);
+	});
+});
+</script>
+
+<template>
+	<Header class="text-white" />
+
+	<section
+		gsap="scroll-trigger"
+		class="sticky top-0 h-screen w-screen overflow-hidden lg:relative"
+	>
+		<img
+			alt=""
+			aria-hidden
+			:src="HeroSection.backdropImage"
+			class="h-full w-full object-cover object-[80%_50%] lg:object-center"
+		/>
+
+		<div class="lg:pt-30 absolute inset-0 pt-20">
+			<h6
+				class="text-title-lg container mx-auto mb-8 px-4 font-bold lg:mb-10 lg:px-10"
+			>
+				{{ HeroSection.title }}
+			</h6>
+
+			<div gsap="reveal" class="bg-light absolute inset-0 scale-0">
+				<div class="container mx-auto py-20">
+					<h1
+						gsap="reveal-2"
+						class="text-header mb-4 text-center font-bold leading-tight opacity-0"
+					>
+						{{ Industries.title }}
 					</h1>
-					<p align="center">
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea unde
-						aperiam ratione sit, doloremque et dolorem? Tempora consequatur
-						odit, quaerat dolore, earum ipsa fuga consectetur asperiores enim
-						quisquam ea aperiam. Lorem ipsum dolor sit amet consectetur
-						adipisicing elit. Distinctio omnis dolor, similique consectetur
-						expedita fuga doloribus at pariatur sequi odio quia laudantium nemo
-						enim ea, repellat quaerat itaque quibusdam obcaecati?
+					<p
+						gsap="reveal-2"
+						class="mx-auto max-w-[800px] text-center opacity-0"
+					>
+						{{ Industries.description }}
 					</p>
+
+					<div class="relative flex items-center justify-center">
+						<ProfessionCard
+							gsap="profession-card"
+							:title="Industries.professions[1].title"
+							:img-url="Industries.professions[1].imgUrl"
+							class="absolute left-20 top-20 z-0 blur-[1px]"
+						/>
+						<ProfessionCard
+							gsap="profession-card"
+							:title="Industries.professions[0].title"
+							:img-url="Industries.professions[0].imgUrl"
+							class="absolute top-20 z-10 scale-125"
+						/>
+						<ProfessionCard
+							gsap="profession-card"
+							:title="Industries.professions[2].title"
+							:img-url="Industries.professions[2].imgUrl"
+							class="absolute right-20 top-20 z-0 blur-[1px]"
+						/>
+					</div>
 				</div>
 			</div>
 
-			<div
-				gsap="hero-card_hidden"
-				class="z-10 h-[360px] w-1/5 translate-y-40 rounded-lg bg-gray-200 opacity-100"
-			></div>
-			<div
-				gsap="hero-card"
-				class="z-10 h-[400px] w-1/4 translate-y-40 rounded-lg border-2 border-gray-400 bg-gray-400 bg-opacity-20"
-			></div>
-			<div
-				gsap="hero-card_hidden"
-				class="z-10 h-[360px] w-1/5 translate-y-40 rounded-lg bg-gray-200 opacity-100"
-			></div>
+			<article
+				gsap="gradient-card"
+				class="gradient-border-mask mx-auto h-[fit-content] w-4/5 p-10 backdrop-blur-sm lg:w-3/4 lg:p-20"
+			>
+				<h1
+					class="text-title-lg text-light lg:text-header lg:text-dark font-bold lg:leading-none"
+				>
+					{{ HeroSection.focusContent }}
+				</h1>
+			</article>
 		</div>
 	</section>
 
-	<section class="hero2 h-screen max-h-screen bg-gray-50">
+	<section class="bg-light sticky px-4 py-10 lg:hidden">
+		<h1 class="text-title-lg pb-4 font-bold leading-none">
+			{{ Industries.title }}
+		</h1>
+		<p class="mb-4">
+			{{ Industries.description }}
+		</p>
+
+		<div class="flex flex-col items-center justify-center gap-4">
+			<ProfessionCard
+				v-for="profession in Industries.professions"
+				:key="profession.title"
+				:title="profession.title"
+				:img-url="profession.imgUrl"
+			/>
+		</div>
+	</section>
+
+	<section class="hero2 bg-primary-50 h-screen max-h-screen">
 		<div class="grid h-full grid-cols-4 gap-8 p-8 text-gray-700">
 			<div class="col-span-2">
 				<h2 class="text-[4em] font-semibold">Proud projects</h2>
@@ -62,13 +215,13 @@
 			<div class="col-span-2 flex h-full flex-col justify-center">
 				<div class="projects">
 					<div
-						class="project relative flex justify-between border-b border-b-gray-200 px-4 py-8 transition-all ease-in-out before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-0 before:bg-gray-600 before:transition-all before:duration-500 hover:before:w-full"
+						class="project relative flex items-center justify-between border-b border-b-gray-200 px-4 py-8 transition-all ease-in-out after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-gray-600 after:transition-all after:duration-500 hover:after:w-full"
 						v-for="(img, index) in projectImages"
 						:data-ref="index + 1"
 						@mouseenter="revealImage(index + 1)"
 						@mouseleave="hideImage(index + 1)"
 					>
-						<h4 class="text-3xl font-semibold">Title</h4>
+						<h4 class="text-[1.8em] font-semibold">{{ index + 1 }}. Project</h4>
 						<p>Web design, Art direction, Banking portal</p>
 					</div>
 				</div>
@@ -77,81 +230,31 @@
 	</section>
 
 	<div class="flair flair--3"></div>
+
+	<Footer />
 </template>
 
-<script setup>
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useSetSeoMeta } from "~/data/SEO";
-
-useSetSeoMeta();
-
-const projectImages = [
-	"https://uizard.io/static/9b3b663d3ac0e2bdc1403bdc496bb3ae/0cfa7/6b04c1f699eb8a263e99a78da374d2e152a78b28-1440x835.webp",
-	"https://uizard.io/static/59d2127f1710ac592be41e29fbe77e71/0cfa7/8d873c59ca702967ba226106db29f25ca4c74bc5-1440x835.webp",
-	"https://uizard.io/static/5d4306fb31cb1acd99e583551daf4ceb/0cfa7/2f0a67de75a2983c83a4ae13c8a588f33749722a-1440x835.webp",
-];
-
-function revealImage(index) {
-	document.querySelector(`#slide-${index}`).classList.add("active");
+<style>
+.gradient-border-mask::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 35px;
+	border: 5px solid transparent;
+	background: linear-gradient(90deg, #f5029494, white) border-box;
+	mask:
+		linear-gradient(#fff 0 0) padding-box,
+		linear-gradient(#fff 0 0);
+	-webkit-mask:
+		linear-gradient(#fff 0 0) padding-box,
+		linear-gradient(#fff 0 0);
+	-webkit-mask-composite: destination-out;
+	mask-composite: exclude;
 }
 
-function hideImage(index) {
-	document
-		.querySelector(`#slide-${index}`)
-		.classList.replace("active", "deactive");
-	setTimeout(function () {
-		document.querySelector(`#slide-${index}`).classList.remove("deactive");
-	}, 600);
-}
-
-onMounted(() => {
-	gsap.registerPlugin(ScrollTrigger);
-
-	const hero_tl = gsap.timeline({
-		scrollTrigger: {
-			trigger: `[gsap="hero"]`,
-			scrub: true,
-			pin: true,
-			start: "top top",
-			end: "+=100%",
-		},
-	});
-
-	hero_tl
-		.from(`[gsap="hero-white_bg"]`, {
-			scale: 1,
-			width: "62%",
-			height: "500px",
-			transformOrigin: "center center",
-			ease: "sine",
-			borderRadius: "0.5rem",
-		})
-		.from(`[gsap="hero-card"]`, {
-			translateY: 0,
-			width: "75%",
-			height: "500px",
-			ease: "sine",
-		})
-		.from(`[gsap="hero-card_hidden"]`, {
-			y: 0,
-			opacity: 0,
-			ease: "sine",
-		});
-
-	gsap.set(".flair", { xPercent: -50, yPercent: -50 });
-
-	let xTo = gsap.quickTo(".flair", "x", { duration: 0.6, ease: "power3" }),
-		yTo = gsap.quickTo(".flair", "y", { duration: 0.6, ease: "power3" });
-
-	window.addEventListener("mousemove", (e) => {
-		xTo(e.clientX);
-		yTo(e.clientY);
-	});
-});
-</script>
-
-<style lang="css">
 .flair {
 	width: 50px;
 	height: 50px;
