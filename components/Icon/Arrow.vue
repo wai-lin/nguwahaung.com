@@ -2,13 +2,11 @@
 interface Props {
 	width?: number;
 	height?: number;
-	fill?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	width: 56,
 	height: 24,
-	fill: "#EE3167",
 });
 </script>
 
@@ -22,14 +20,14 @@ const props = withDefaults(defineProps<Props>(), {
 	>
 		<path
 			d="M50.0935 10.4573L41.8181 2.18182L43.9999 0L55.9999 12.0001L43.9999 24L41.8181 21.8182L50.0935 13.5429H31.3154V10.4573H50.0935Z"
-			:fill="props.fill"
+			fill="currentColor"
 		/>
 		<rect
 			x="0.459961"
 			y="10.4575"
 			width="30.8556"
 			height="3.08556"
-			:fill="props.fill"
+			fill="currentColor"
 		/>
 	</svg>
 </template>

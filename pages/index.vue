@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { AboutMe } from "~/data/AboutMe";
 import { HeroSection } from "~/data/HeroSection";
 import { Industries } from "~/data/Industries";
 import { useSetSeoMeta } from "~/data/SEO";
@@ -112,18 +113,18 @@ onMounted(() => {
 			class="h-full w-full object-cover object-[80%_50%] lg:object-center"
 		/>
 
-		<div class="lg:pt-30 absolute inset-0 pt-20">
+		<div class="absolute inset-0 pt-32">
 			<h6
-				class="text-title-lg container mx-auto mb-8 px-4 font-bold lg:mb-10 lg:px-10"
+				class="container mx-auto mb-8 px-4 text-title-lg font-bold lg:mb-10 lg:px-10"
 			>
 				{{ HeroSection.title }}
 			</h6>
 
-			<div gsap="reveal" class="bg-light absolute inset-0 scale-0">
+			<div gsap="reveal" class="absolute inset-0 scale-0 bg-light">
 				<div class="container mx-auto py-20">
 					<h1
 						gsap="reveal-2"
-						class="text-header mb-4 text-center font-bold leading-tight opacity-0"
+						class="mb-4 text-center text-header font-bold leading-tight opacity-0"
 					>
 						{{ Industries.title }}
 					</h1>
@@ -162,7 +163,7 @@ onMounted(() => {
 				class="gradient-border-mask mx-auto h-[fit-content] w-4/5 p-10 backdrop-blur-sm lg:w-3/4 lg:p-20"
 			>
 				<h1
-					class="text-title-lg text-light lg:text-header lg:text-dark font-bold lg:leading-none"
+					class="text-title-lg font-bold text-light lg:text-header lg:leading-none lg:text-dark"
 				>
 					{{ HeroSection.focusContent }}
 				</h1>
@@ -170,8 +171,8 @@ onMounted(() => {
 		</div>
 	</section>
 
-	<section class="bg-light sticky px-4 py-10 lg:hidden">
-		<h1 class="text-title-lg pb-4 font-bold leading-none">
+	<section class="sticky bg-light px-4 py-10 lg:hidden">
+		<h1 class="pb-4 text-title-lg font-bold leading-none">
 			{{ Industries.title }}
 		</h1>
 		<p class="mb-4">
@@ -188,8 +189,31 @@ onMounted(() => {
 		</div>
 	</section>
 
-	<section class="hero2 bg-primary-50 h-screen max-h-screen">
-		<div class="grid h-full grid-cols-4 gap-8 p-8 text-gray-700">
+	<section class="container mx-auto px-4 py-32">
+		<span v-if="false">{{ AboutMe }}</span>
+		<h4 class="mb-4 text-body font-medium lg:text-title-md">About me</h4>
+
+		<ClientOnly>
+			<p class="text-justify text-title-md leading-loose lg:text-title-lg">
+				<template
+					v-for="(desc, index) in AboutMe.description"
+					:key="`about_me-${index}`"
+				>
+					<span v-if="typeof desc === 'string'" class="pr-2">{{ desc }} </span>
+					<RadialImgText v-else v-bind="desc" class="pr-2" />
+				</template>
+			</p>
+		</ClientOnly>
+
+		<div class="mt-10 flex items-center justify-end">
+			<RouterLink to="" class="text-primary-500 hover:text-primary-400">
+				<IconArrow />
+			</RouterLink>
+		</div>
+	</section>
+
+	<section class="hero2 h-screen max-h-screen bg-primary-50">
+		<div class="text-gray-700 grid h-full grid-cols-4 gap-8 p-8">
 			<div class="col-span-2">
 				<h2 class="text-[4em] font-semibold">Proud projects</h2>
 				<p class="font-normal">
@@ -201,7 +225,7 @@ onMounted(() => {
 					<div
 						v-for="(img, index) in projectImages"
 						:id="'slide-' + (index + 1)"
-						class="slide custom-transition absolute left-0 top-0 h-full w-full bg-gray-200 py-3 pl-3 pr-6"
+						class="slide custom-transition bg-gray-200 absolute left-0 top-0 h-full w-full py-3 pl-3 pr-6"
 					>
 						<img
 							:src="img"
@@ -215,7 +239,7 @@ onMounted(() => {
 			<div class="col-span-2 flex h-full flex-col justify-center">
 				<div class="projects">
 					<div
-						class="project relative flex items-center justify-between border-b border-b-gray-200 px-4 py-8 transition-all ease-in-out after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-gray-600 after:transition-all after:duration-500 hover:after:w-full"
+						class="project border-b-gray-200 after:bg-gray-600 relative flex items-center justify-between border-b px-4 py-8 transition-all ease-in-out after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:transition-all after:duration-500 hover:after:w-full"
 						v-for="(img, index) in projectImages"
 						:data-ref="index + 1"
 						@mouseenter="revealImage(index + 1)"
