@@ -1,20 +1,25 @@
 <script setup lang="ts">
 import { Header } from "~/data/Header";
+console.log(Header);
 </script>
 
 <template>
 	<header
-		class="absolute top-0 z-50 flex h-20 w-full items-center justify-between px-4 lg:px-10"
+		class="absolute top-0 z-50 flex h-20 w-full items-center justify-between px-16 py-6"
 	>
 		<div class="flex items-center">
 			<RouterLink :to="Header.brand.to">
-				<h3 class="text-title-md font-bold">{{ Header.brand.title }}</h3>
+				<Magnetic>
+					<img :src="Header.brand.img" />
+				</Magnetic>
 			</RouterLink>
 		</div>
 
-		<div class="flex items-center justify-end gap-4 lg:gap-10">
+		<div
+			class="flex items-center justify-end gap-4 text-body font-medium text-dark lg:gap-10"
+		>
 			<RouterLink v-for="link in Header.links" :key="link.title" :to="link.to">
-				{{ link.title }}
+				<Magnetic>{{ link.title }}</Magnetic>
 			</RouterLink>
 		</div>
 	</header>

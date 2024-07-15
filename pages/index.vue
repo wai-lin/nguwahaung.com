@@ -114,9 +114,7 @@ onMounted(() => {
 		/>
 
 		<div class="absolute inset-0 py-4">
-			<h6
-				class="container mx-auto mb-8 px-4 text-title-lg font-bold lg:mb-10 lg:px-10"
-			>
+			<h6 class="container mx-auto mb-8 px-16 text-title-lg font-bold lg:mb-10">
 				{{ HeroSection.title }}
 			</h6>
 
@@ -128,7 +126,7 @@ onMounted(() => {
 					>
 						{{ Industries.title }}
 					</h1>
-					<p gsap="reveal-2" class="text-sm mb-8 opacity-0">
+					<p gsap="reveal-2" class="mb-8 text-sm text-primary-500 opacity-0">
 						{{ Industries.subtitle }}
 					</p>
 					<p
@@ -137,6 +135,10 @@ onMounted(() => {
 					>
 						{{ Industries.description }}
 					</p>
+
+					<Button gsap="reveal-2" class="mt-10 opacity-0">
+						<RouterLink to="/case-study"> View case study </RouterLink>
+					</Button>
 
 					<div class="relative flex items-center justify-center py-10">
 						<ProfessionCard
@@ -150,7 +152,7 @@ onMounted(() => {
 
 			<article
 				gsap="gradient-card"
-				class="gradient-border-mask mx-auto h-[fit-content] w-4/5 p-10 backdrop-blur-sm lg:w-3/4 lg:p-20"
+				class="flex h-full w-4/5 items-center p-10 backdrop-blur-sm lg:w-3/4 lg:p-20"
 			>
 				<h1
 					class="text-title-lg font-bold text-light lg:text-header lg:leading-none lg:text-dark"
@@ -165,7 +167,7 @@ onMounted(() => {
 		<h1 class="pb-4 text-title-lg font-bold leading-none">
 			{{ Industries.title }}
 		</h1>
-		<p class="mb-4">
+		<p class="mb-4 text-primary-500">
 			{{ Industries.description }}
 		</p>
 
@@ -179,7 +181,7 @@ onMounted(() => {
 		</div>
 	</section>
 
-	<section class="container mx-auto px-4 py-32">
+	<!-- <section class="container mx-auto px-4 py-32">
 		<span v-if="false">{{ AboutMe }}</span>
 		<h4 class="mb-4 text-body font-medium lg:text-title-md">About me</h4>
 
@@ -200,7 +202,7 @@ onMounted(() => {
 				<IconArrow />
 			</RouterLink>
 		</div>
-	</section>
+	</section> -->
 
 	<!-- <section class="container mx-auto mb-8 h-screen">
 		<div class="text-gray-700 grid h-full grid-cols-4 gap-2 py-8 md:gap-8">
