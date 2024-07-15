@@ -8,15 +8,16 @@ const handleClick = (event: MouseEvent) => {
 <template>
 	<button
 		ref="button"
-		class="btn rounded-full border-2 border-medium-dark bg-white px-8 py-4 text-dark before:bg-primary-500 hover:border-primary-500"
+		class="exampleBtn rounded-full border-2 border-medium-dark bg-white px-8 py-4 text-dark before:bg-primary-500 hover:border-primary-500"
 		@click="handleClick"
 	>
-		<span class="relative z-10"><slot></slot></span>
+		<span class="relative z-10">Hover Me</span>
 	</button>
 </template>
 
 <style scoped>
-.btn {
+.exampleBtn {
+	padding: 12px 24px;
 	position: relative;
 	overflow: hidden;
 	z-index: 1;
@@ -31,9 +32,9 @@ const handleClick = (event: MouseEvent) => {
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		width: 100%;
-		height: 100%;
-		border-radius: 30%;
+		width: 140px;
+		height: 140px;
+		border-radius: 50%;
 		transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 0);
 		transition:
 			opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1),
@@ -43,7 +44,7 @@ const handleClick = (event: MouseEvent) => {
 
 	&:hover {
 		span {
-			color: white;
+			color: hsl(222, 100%, 95%);
 		}
 
 		&:before {

@@ -4,11 +4,11 @@ import { Footer } from "~/data/Footer";
 
 <template>
 	<footer class="container mx-auto mb-8 px-4 pt-20">
-		<h1 class="text-gray-800 sm:text-title-xl my-6 text-header font-extrabold">
+		<h1 class="sm:text-title-xl my-6 text-header font-extrabold text-gray-800">
 			LET'S CHAT
 		</h1>
 
-		<p class="text-gray-600 text-body tracking-normal md:text-title-md">
+		<p class="text-body tracking-normal text-gray-600 md:text-title-md">
 			I'm a product designer with a passion for innovative design. I build
 			scalable websites focused on seamless development. My expertise in
 			branding ensures cohesive and compelling brand identities.
@@ -22,34 +22,36 @@ import { Footer } from "~/data/Footer";
 				<div>
 					<div class="flex justify-between">
 						<h5
-							class="text-lg font-semibold uppercase text-medium-dark md:text-title-md"
+							class="text-lg font-semibold uppercase text-primary-500 md:text-title-md"
 						>
 							{{ card.title }}
 						</h5>
 						<span class="text-md text-light-dark">0{{ index + 1 }}</span>
 					</div>
 				</div>
-				<hr class="border-gray-600 my-2 md:my-4" />
+				<hr class="my-2 border-gray-600 md:my-4" />
 				<p class="text-medium-dark">{{ card.content }}</p>
 			</div>
 		</div>
 
-		<Button type="primary">CONTACT ME VIA EMAIL</Button>
+		<div class="inline-block">
+			<Button type="primary">CONTACT ME VIA EMAIL</Button>
+		</div>
 
 		<div class="mt-20 flex justify-between">
 			<div class="flex gap-8">
 				<div>
-					<p class="text-gray-500 font-light">Version</p>
-					<p class="text-gray-600 font-semibold">©2024 Charm</p>
+					<p class="font-light text-gray-500">Version</p>
+					<p class="font-semibold text-gray-600">©2024 Charm</p>
 				</div>
 				<div>
-					<p class="text-gray-500 font-light">Local time</p>
-					<p class="text-gray-600 font-semibold">Bangkok 11:45 (GMT+7)</p>
+					<p class="font-light text-gray-500">Local time</p>
+					<p class="font-semibold text-gray-600">Bangkok 11:45 (GMT+7)</p>
 				</div>
 			</div>
 			<div>
-				<p class="text-gray-500 font-light">Social</p>
-				<div class="text-gray-600 flex gap-8 font-semibold">
+				<p class="font-light text-gray-500">Social</p>
+				<div class="flex gap-8 font-semibold text-gray-600">
 					<a href="#">LinkedIn</a>
 					<a href="#">Facebook</a>
 					<a href="#">Instagram</a>
