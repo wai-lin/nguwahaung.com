@@ -1,11 +1,11 @@
 export const Header = {
 	brand: {
 		title: "Charm",
-		to: "",
+		to: "/",
 	},
 	links: [
 		{ title: "About me", to: "" },
-		{ title: "Resume", to: "" },
+		{ title: "Case study", to: "/case-study" },
 		{ title: "Contact", to: "" },
 	],
 };
