@@ -16,16 +16,16 @@ const projectImages = [
 	"https://uizard.io/static/5d4306fb31cb1acd99e583551daf4ceb/0cfa7/2f0a67de75a2983c83a4ae13c8a588f33749722a-1440x835.webp",
 ];
 
-function revealImage(index) {
-	document.querySelector(`#slide-${index}`).classList.add("active");
+function revealImage(index: number) {
+	document.querySelector(`#slide-${index}`)?.classList.add("active");
 }
 
-function hideImage(index) {
+function hideImage(index: number) {
 	document
 		.querySelector(`#slide-${index}`)
-		.classList.replace("active", "deactive");
+		?.classList.replace("active", "deactive");
 	setTimeout(function () {
-		document.querySelector(`#slide-${index}`).classList.remove("deactive");
+		document.querySelector(`#slide-${index}`)?.classList.remove("deactive");
 	}, 600);
 }
 
@@ -113,7 +113,7 @@ onMounted(() => {
 			class="h-full w-full object-cover object-[80%_50%] lg:object-center"
 		/>
 
-		<div class="absolute inset-0 pt-32">
+		<div class="absolute inset-0 py-4">
 			<h6
 				class="container mx-auto mb-8 px-4 text-title-lg font-bold lg:mb-10 lg:px-10"
 			>
@@ -121,38 +121,28 @@ onMounted(() => {
 			</h6>
 
 			<div gsap="reveal" class="absolute inset-0 scale-0 bg-light">
-				<div class="container mx-auto py-20">
+				<div class="container mx-auto py-10">
 					<h1
 						gsap="reveal-2"
-						class="mb-4 text-center text-header font-bold leading-tight opacity-0"
+						class="text-header font-bold leading-tight opacity-0"
 					>
 						{{ Industries.title }}
 					</h1>
+					<p gsap="reveal-2" class="text-sm mb-8 opacity-0">
+						{{ Industries.subtitle }}
+					</p>
 					<p
 						gsap="reveal-2"
-						class="mx-auto max-w-[800px] text-center opacity-0"
+						class="text-2xl font-medium tracking-wide opacity-0"
 					>
 						{{ Industries.description }}
 					</p>
 
-					<div class="relative flex items-center justify-center">
-						<ProfessionCard
-							gsap="profession-card"
-							:title="Industries.professions[1].title"
-							:img-url="Industries.professions[1].imgUrl"
-							class="absolute left-20 top-20 z-0 blur-[1px]"
-						/>
+					<div class="relative flex items-center justify-center py-10">
 						<ProfessionCard
 							gsap="profession-card"
 							:title="Industries.professions[0].title"
 							:img-url="Industries.professions[0].imgUrl"
-							class="absolute top-20 z-10 scale-125"
-						/>
-						<ProfessionCard
-							gsap="profession-card"
-							:title="Industries.professions[2].title"
-							:img-url="Industries.professions[2].imgUrl"
-							class="absolute right-20 top-20 z-0 blur-[1px]"
 						/>
 					</div>
 				</div>
@@ -212,16 +202,20 @@ onMounted(() => {
 		</div>
 	</section>
 
-	<section class="hero2 h-screen max-h-screen bg-primary-50">
-		<div class="text-gray-700 grid h-full grid-cols-4 gap-8 p-8">
-			<div class="col-span-2">
-				<h2 class="text-[4em] font-semibold">Proud projects</h2>
-				<p class="font-normal">
+	<!-- <section class="container mx-auto mb-8 h-screen">
+		<div class="text-gray-700 grid h-full grid-cols-4 gap-2 py-8 md:gap-8">
+			<div class="col-span-4 my-auto md:col-span-2 md:my-0 md:h-full">
+				<h2 class="sm:text-title-xl text-title-lg font-semibold lg:text-header">
+					Proud projects
+				</h2>
+				<p class="text-sm mt-4 font-normal lg:text-body">
 					Below is a few of my most recent projects. To view all work, <br />
 					head over to the projects page.
 				</p>
 
-				<div class="project-thumbnail direction_right mt-6">
+				<div
+					class="project-thumbnail direction_right mt-6 hidden h-72 w-full md:block lg:h-[500px] lg:w-4/5"
+				>
 					<div
 						v-for="(img, index) in projectImages"
 						:id="'slide-' + (index + 1)"
@@ -236,22 +230,26 @@ onMounted(() => {
 				</div>
 			</div>
 
-			<div class="col-span-2 flex h-full flex-col justify-center">
+			<div class="col-span-4 flex h-full flex-col justify-center md:col-span-2">
 				<div class="projects">
 					<div
-						class="project border-b-gray-200 after:bg-gray-600 relative flex items-center justify-between border-b px-4 py-8 transition-all ease-in-out after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:transition-all after:duration-500 hover:after:w-full"
+						class="project border-b-gray-200 after:bg-gray-600 relative flex-col justify-between border-b px-0 py-2 transition-all ease-in-out md:flex md:px-4 md:py-8 lg:flex-row lg:items-center lg:py-8"
 						v-for="(img, index) in projectImages"
 						:data-ref="index + 1"
 						@mouseenter="revealImage(index + 1)"
 						@mouseleave="hideImage(index + 1)"
 					>
-						<h4 class="text-[1.8em] font-semibold">{{ index + 1 }}. Project</h4>
-						<p>Web design, Art direction, Banking portal</p>
+						<h4
+							class="text-title-md font-semibold md:text-title-md lg:text-title-lg"
+						>
+							{{ index + 1 }}. Project
+						</h4>
+						<p class="text-sm">Web design, Art direction, Banking portal</p>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
 	<div class="flair flair--3"></div>
 
@@ -299,8 +297,6 @@ onMounted(() => {
 }
 
 .project-thumbnail {
-	width: 85%;
-	height: 500px;
 	grid-row: 1;
 	overflow: hidden;
 	position: relative;
