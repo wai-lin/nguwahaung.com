@@ -4,11 +4,13 @@ import { Flip } from "gsap/Flip";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
 import { onMounted, ref } from "vue";
+import { Professions } from "~/data/Professions";
 import { HeroSection } from "~/data/HeroSection";
 import { Industries } from "~/data/Industries";
 import { useSetSeoMeta } from "~/data/SEO";
 
 useSetSeoMeta();
+console.log(HeroSection);
 
 // const prefersReducedMotion = ref(false);
 
@@ -35,9 +37,7 @@ useSetSeoMeta();
 
 onMounted(() => {
 	// Register plugins first
-	gsap.registerPlugin(ScrollTrigger);
-	gsap.registerPlugin(TextPlugin);
-	gsap.registerPlugin(Flip);
+	gsap.registerPlugin(ScrollTrigger, TextPlugin, Flip);
 
 	// gsap.to(heroTitle.value, {
 	// 	duration: 1.5,
@@ -115,8 +115,8 @@ onMounted(() => {
 	<Header class="text-white" />
 
 	<section
-		gsap="scroll-trigger"
-		class="sticky top-0 h-screen w-screen overflow-hidden lg:relative"
+		gsap="hero-section"
+		class="relative h-screen w-screen overflow-hidden lg:relative"
 	>
 		<img
 			alt=""
@@ -124,52 +124,13 @@ onMounted(() => {
 			:src="HeroSection.backdropImage"
 			class="h-full w-full object-cover object-[80%_50%] lg:object-center"
 		/>
+		<img
+			:src="HeroSection.profileImage"
+			class="absolute -bottom-1 -right-10 w-60 md:w-80 lg:right-10 lg:w-96"
+		/>
 
-		<div class="absolute inset-0 py-4">
-			<!-- <h6 class="container mx-auto mb-8 px-16 text-title-lg font-bold lg:mb-10">
-				{{ HeroSection.title }}
-			</h6> -->
-
-			<div gsap="reveal" class="absolute inset-0 scale-0 bg-transparent">
-				<div class="container mx-auto py-10 pt-20">
-					<div class="grid grid-cols-4 gap-8">
-						<div class="col-span-4 md:col-span-2">
-							<h1 gsap="reveal-2" class="hero-title leading-tight opacity-0">
-								{{ Industries.title }}
-							</h1>
-							<p
-								gsap="reveal-2"
-								class="mb-8 text-sm font-medium text-primary-500 opacity-0"
-							>
-								{{ Industries.subtitle }}
-							</p>
-							<p gsap="reveal-2" class="text-content opacity-0">
-								{{ Industries.description }}
-							</p>
-
-							<Button
-								gsap="reveal-2"
-								class="mt-10 opacity-0"
-								@click="navigateTo('/case-study')"
-							>
-								View case study
-							</Button>
-						</div>
-						<div class="col-span-4 md:col-span-2">
-							<ProfessionCard
-								gsap="reveal-2"
-								:title="Industries.professions[0].title"
-								:img-url="Industries.professions[0].imgUrl"
-							/>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<article
-				gsap="gradient-card"
-				class="relative flex h-full w-3/5 flex-col justify-start px-8 pt-8 md:px-16 lg:w-3/4"
-			>
+		<div class="container absolute inset-0 py-4">
+			<div class="pt-10">
 				<h1
 					ref="heroTitle"
 					class="hero-title mt-16 min-h-0 md:mt-16 md:min-h-72 lg:mt-28"
@@ -178,24 +139,18 @@ onMounted(() => {
 					PRODUCT DESIGNER <br />& DEVELOPER <br />
 					BASED IN BANGKOK
 				</h1>
-				<div>
-					<Button
-						class="mt-10 bg-transparent uppercase"
-						@click="navigateTo('/case-study')"
-					>
-						View case study
-					</Button>
-				</div>
-			</article>
+
+				<Button
+					class="mt-10 bg-transparent uppercase"
+					@click="navigateTo('/case-study')"
+				>
+					View case study
+				</Button>
+			</div>
 		</div>
-		<!-- user image -->
-		<img
-			:src="'./images/subject.png'"
-			class="absolute bottom-10 right-10 w-60 md:w-80 lg:w-96"
-		/>
 	</section>
 
-	<section class="container sticky bg-light pt-20 lg:hidden">
+	<section class="container sticky bg-light pt-20">
 		<div class="grid grid-cols-4 gap-8">
 			<div class="col-span-4 md:col-span-2">
 				<h1 class="hero-title leading-tight">
@@ -224,157 +179,35 @@ onMounted(() => {
 		</div>
 	</section>
 
-	<!-- <section class="container mx-auto px-4 py-32">
-		<span v-if="false">{{ AboutMe }}</span>
-		<h4 class="mb-4 text-body font-medium lg:text-title-md">About me</h4>
+	<section class="container pt-40">
+		<h1 ref="footerTitle" class="hero-title my-6 font-extrabold text-gray-800">
+			Let's Chat
+		</h1>
 
-		<ClientOnly>
-			<p class="text-justify text-title-md leading-loose lg:text-title-lg">
-				<template
-					v-for="(desc, index) in AboutMe.description"
-					:key="`about_me-${index}`"
-				>
-					<span v-if="typeof desc === 'string'" class="pr-2">{{ desc }} </span>
-					<RadialImgText v-else v-bind="desc" class="pr-2" />
-				</template>
-			</p>
-		</ClientOnly>
-
-		<div class="mt-10 flex items-center justify-end">
-			<RouterLink to="" class="text-primary-500 hover:text-primary-400">
-				<IconArrow />
-			</RouterLink>
-		</div>
-	</section> -->
-
-	<!-- <section class="container mx-auto mb-8 h-screen">
-		<div class="text-gray-700 grid h-full grid-cols-4 gap-2 py-8 md:gap-8">
-			<div class="col-span-4 my-auto md:col-span-2 md:my-0 md:h-full">
-				<h2 class="sm:text-title-xl text-title-lg font-semibold lg:text-header">
-					Proud projects
-				</h2>
-				<p class="text-sm mt-4 font-normal lg:text-body">
-					Below is a few of my most recent projects. To view all work, <br />
-					head over to the projects page.
-				</p>
-
-				<div
-					class="project-thumbnail direction_right mt-6 hidden h-72 w-full md:block lg:h-[500px] lg:w-4/5"
-				>
-					<div
-						v-for="(img, index) in projectImages"
-						:id="'slide-' + (index + 1)"
-						class="slide custom-transition bg-gray-200 absolute left-0 top-0 h-full w-full py-3 pl-3 pr-6"
-					>
-						<img
-							:src="img"
-							alt=""
-							class="custom-scale custom-transition h-full w-full transform object-cover object-center p-2.5"
-						/>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-span-4 flex h-full flex-col justify-center md:col-span-2">
-				<div class="projects">
-					<div
-						class="project border-b-gray-200 after:bg-gray-600 relative flex-col justify-between border-b px-0 py-2 transition-all ease-in-out md:flex md:px-4 md:py-8 lg:flex-row lg:items-center lg:py-8"
-						v-for="(img, index) in projectImages"
-						:data-ref="index + 1"
-						@mouseenter="revealImage(index + 1)"
-						@mouseleave="hideImage(index + 1)"
-					>
-						<h4
-							class="text-title-md font-semibold md:text-title-md lg:text-title-lg"
+		<div class="my-28 grid grid-cols-6 gap-10">
+			<div
+				class="col-span-6 p-0 sm:col-span-3 md:col-span-3 lg:col-span-2"
+				v-for="(card, index) in Professions"
+			>
+				<div>
+					<div class="flex justify-between">
+						<h5
+							class="text-lg font-semibold uppercase text-primary-500 md:text-title-md"
 						>
-							{{ index + 1 }}. Project
-						</h4>
-						<p class="text-sm">Web design, Art direction, Banking portal</p>
+							{{ card.title }}
+						</h5>
+						<span class="text-md text-light-dark">0{{ index + 1 }}</span>
 					</div>
 				</div>
+				<hr class="my-2 border-gray-600 md:mb-8 md:mt-5" />
+				<p class="text-dark">{{ card.content }}</p>
 			</div>
 		</div>
-	</section> -->
 
-	<div class="flair flair--3"></div>
+		<div class="inline-block">
+			<Button type="primary">CONTACT ME VIA EMAIL</Button>
+		</div>
+	</section>
 
 	<Footer />
 </template>
-
-<style>
-.gradient-border-mask::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	border-radius: 35px;
-	border: 5px solid transparent;
-	background: linear-gradient(90deg, #f5029494, white) border-box;
-	mask:
-		linear-gradient(#fff 0 0) padding-box,
-		linear-gradient(#fff 0 0);
-	-webkit-mask:
-		linear-gradient(#fff 0 0) padding-box,
-		linear-gradient(#fff 0 0);
-	-webkit-mask-composite: destination-out;
-	mask-composite: exclude;
-}
-
-.flair {
-	width: 50px;
-	height: 50px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	pointer-events: none;
-	border: 2px solid rgb(212 212 216);
-	border-radius: 100%;
-}
-
-.projects:hover > * {
-	opacity: 0.3;
-}
-
-.projects > *:hover {
-	opacity: 1;
-}
-
-.project-thumbnail {
-	grid-row: 1;
-	overflow: hidden;
-	position: relative;
-}
-
-.custom-transition {
-	transition: clip-path 0.6s cubic-bezier(0.87, 0, 0.13, 1);
-}
-
-.project-thumbnail .slide img {
-	transform: scale(1.4);
-	transition: transform 4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.project-thumbnail .slide.active img,
-.project-thumbnail .slide.deactive img {
-	transform: scale(1);
-}
-
-.project-thumbnail.direction_right .slide {
-	clip-path: inset(0 100% 0 0);
-}
-
-.project-thumbnail.direction_right .slide.deactive {
-	clip-path: inset(0 0 0 100%);
-}
-
-.project-thumbnail.direction_right .slide.active {
-	clip-path: inset(0 0 0 0);
-	z-index: 98;
-}
-
-.projects .project:after {
-	transition: width 0.6s cubic-bezier(0.87, 0, 0.13, 1);
-}
-</style>

@@ -12,7 +12,7 @@ const props = defineProps<Props>();
 		<img
 			alt=""
 			:src="props.imgUrl"
-			class="h-full w-full rounded-lg object-cover"
+			class="h-full w-full rounded-lg object-cover object-left-top"
 		/>
 	</div>
 </template>
