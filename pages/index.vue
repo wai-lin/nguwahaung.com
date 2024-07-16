@@ -153,7 +153,7 @@ onMounted(() => {
 						{{ Showcase.description }}
 					</p>
 
-					<Button class="mt-10" @click="navigateTo('/case-study')">
+					<Button class="mt-10 uppercase" @click="navigateTo('/case-study')">
 						View case study
 					</Button>
 				</div>
