@@ -31,7 +31,7 @@ useSetSeoMeta();
 // 	}, 600);
 // }
 
-const heroTitle = ref(null);
+// const heroTitle = ref(null);
 
 onMounted(() => {
 	// Register plugins first
@@ -39,11 +39,11 @@ onMounted(() => {
 	gsap.registerPlugin(TextPlugin);
 	gsap.registerPlugin(Flip);
 
-	gsap.to(heroTitle.value, {
-		duration: 1.5,
-		text: HeroSection.focusContent,
-		ease: "power1.out",
-	});
+	// gsap.to(heroTitle.value, {
+	// 	duration: 1.5,
+	// 	text: HeroSection.focusContent,
+	// 	ease: "power1.out",
+	// });
 
 	// Trigger animations based on Media Query
 	type MediaConditions = {
@@ -126,49 +126,57 @@ onMounted(() => {
 		/>
 
 		<div class="absolute inset-0 py-4">
-			<h6 class="container mx-auto mb-8 px-16 text-title-lg font-bold lg:mb-10">
+			<!-- <h6 class="container mx-auto mb-8 px-16 text-title-lg font-bold lg:mb-10">
 				{{ HeroSection.title }}
-			</h6>
+			</h6> -->
 
-			<div gsap="reveal" class="absolute inset-0 scale-0 bg-light">
-				<div class="container mx-auto py-10">
-					<h1 gsap="reveal-2" class="hero-title leading-tight opacity-0">
-						{{ Industries.title }}
-					</h1>
-					<p
-						gsap="reveal-2"
-						class="mb-8 text-sm font-medium text-primary-500 opacity-0"
-					>
-						{{ Industries.subtitle }}
-					</p>
-					<p gsap="reveal-2" class="text-content opacity-0">
-						{{ Industries.description }}
-					</p>
+			<div gsap="reveal" class="absolute inset-0 scale-0 bg-transparent">
+				<div class="container mx-auto py-10 pt-20">
+					<div class="grid grid-cols-4 gap-8">
+						<div class="col-span-4 md:col-span-2">
+							<h1 gsap="reveal-2" class="hero-title leading-tight opacity-0">
+								{{ Industries.title }}
+							</h1>
+							<p
+								gsap="reveal-2"
+								class="mb-8 text-sm font-medium text-primary-500 opacity-0"
+							>
+								{{ Industries.subtitle }}
+							</p>
+							<p gsap="reveal-2" class="text-content opacity-0">
+								{{ Industries.description }}
+							</p>
 
-					<Button
-						gsap="reveal-2"
-						class="mt-10 opacity-0"
-						@click="navigateTo('/case-study')"
-					>
-						View case study
-					</Button>
-
-					<div class="relative flex items-center justify-center py-10">
-						<ProfessionCard
-							gsap="profession-card"
-							:title="Industries.professions[0].title"
-							:img-url="Industries.professions[0].imgUrl"
-						/>
+							<Button
+								gsap="reveal-2"
+								class="mt-10 opacity-0"
+								@click="navigateTo('/case-study')"
+							>
+								View case study
+							</Button>
+						</div>
+						<div class="col-span-4 md:col-span-2">
+							<ProfessionCard
+								gsap="reveal-2"
+								:title="Industries.professions[0].title"
+								:img-url="Industries.professions[0].imgUrl"
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
 
 			<article
 				gsap="gradient-card"
-				class="flex h-full w-4/5 flex-col justify-center px-8 md:px-16 lg:w-3/4"
+				class="relative flex h-full w-3/5 flex-col justify-start px-8 pt-8 md:px-16 lg:w-3/4"
 			>
-				<h1 ref="heroTitle" class="hero-title min-h-60">
-					<!-- {{ HeroSection.focusContent }} -->
+				<h1
+					ref="heroTitle"
+					class="hero-title mt-16 min-h-0 md:mt-16 md:min-h-72 lg:mt-28"
+				>
+					EXPERIENCED <br />
+					PRODUCT DESIGNER <br />& DEVELOPER <br />
+					BASED IN BANGKOK
 				</h1>
 				<div>
 					<Button
@@ -180,30 +188,39 @@ onMounted(() => {
 				</div>
 			</article>
 		</div>
+		<!-- user image -->
+		<img
+			:src="'./images/subject.png'"
+			class="absolute bottom-10 right-10 w-60 md:w-80 lg:w-96"
+		/>
 	</section>
 
-	<section class="container sticky bg-light lg:hidden">
-		<h1 class="hero-title leading-tight">
-			{{ Industries.title }}
-		</h1>
-		<p ref="heroSubtitle" class="mb-8 text-sm font-medium text-primary-500">
-			{{ Industries.subtitle }}
-		</p>
-		<p class="text-content">
-			{{ Industries.description }}
-		</p>
+	<section class="container sticky bg-light pt-20 lg:hidden">
+		<div class="grid grid-cols-4 gap-8">
+			<div class="col-span-4 md:col-span-2">
+				<h1 class="hero-title leading-tight">
+					{{ Industries.title }}
+				</h1>
+				<p ref="heroSubtitle" class="mb-8 text-sm font-medium text-primary-500">
+					{{ Industries.subtitle }}
+				</p>
+				<p class="text-content">
+					{{ Industries.description }}
+				</p>
 
-		<Button class="mt-10" @click="navigateTo('/case-study')">
-			View case study
-		</Button>
+				<Button class="mt-10" @click="navigateTo('/case-study')">
+					View case study
+				</Button>
+			</div>
 
-		<div class="flex flex-col items-center justify-center gap-4">
-			<ProfessionCard
-				v-for="profession in Industries.professions"
-				:key="profession.title"
-				:title="profession.title"
-				:img-url="profession.imgUrl"
-			/>
+			<div class="col-span-4 md:col-span-2">
+				<ProfessionCard
+					v-for="profession in Industries.professions"
+					:key="profession.title"
+					:title="profession.title"
+					:img-url="profession.imgUrl"
+				/>
+			</div>
 		</div>
 	</section>
 
