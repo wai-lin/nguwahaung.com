@@ -4,9 +4,7 @@ console.log(Header);
 </script>
 
 <template>
-	<header
-		class="absolute top-0 z-50 flex h-20 w-full items-center justify-between px-16 py-6"
-	>
+	<header class="container absolute inset-x-0 top-0 z-50 flex h-20 w-full">
 		<div class="flex items-center">
 			<RouterLink :to="Header.brand.to">
 				<Magnetic>

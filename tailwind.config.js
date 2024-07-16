@@ -15,7 +15,7 @@ export default {
 				],
 			},
 			fontSize: {
-				header: "5rem", // 80px
+				header: "90px", // 80px
 				"title-lg": "2rem", // 32px
 				"title-md": "1.25rem", // 20px
 				body: "1rem", // 16px

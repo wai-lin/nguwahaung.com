@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.hero-title {
+		@apply text-[40px] font-semibold leading-none text-dark md:text-[60px] lg:text-header;
+	}
+
+	.text-content {
+		@apply text-[18px] font-medium tracking-wide text-dark md:text-[32px];
+	}
+
+	.container {
+		@apply mx-auto w-full max-w-full items-center justify-between px-8 py-3 md:px-16 md:py-6;
+	}
+}

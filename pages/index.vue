@@ -1,37 +1,49 @@
 <script setup lang="ts">
 import gsap from "gsap";
+import { Flip } from "gsap/Flip";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { AboutMe } from "~/data/AboutMe";
+import { TextPlugin } from "gsap/TextPlugin";
+import { onMounted, ref } from "vue";
 import { HeroSection } from "~/data/HeroSection";
 import { Industries } from "~/data/Industries";
 import { useSetSeoMeta } from "~/data/SEO";
 
 useSetSeoMeta();
 
-const prefersReducedMotion = ref(false);
+// const prefersReducedMotion = ref(false);
 
-const projectImages = [
-	"https://uizard.io/static/9b3b663d3ac0e2bdc1403bdc496bb3ae/0cfa7/6b04c1f699eb8a263e99a78da374d2e152a78b28-1440x835.webp",
-	"https://uizard.io/static/59d2127f1710ac592be41e29fbe77e71/0cfa7/8d873c59ca702967ba226106db29f25ca4c74bc5-1440x835.webp",
-	"https://uizard.io/static/5d4306fb31cb1acd99e583551daf4ceb/0cfa7/2f0a67de75a2983c83a4ae13c8a588f33749722a-1440x835.webp",
-];
+// const projectImages = [
+// 	"https://uizard.io/static/9b3b663d3ac0e2bdc1403bdc496bb3ae/0cfa7/6b04c1f699eb8a263e99a78da374d2e152a78b28-1440x835.webp",
+// 	"https://uizard.io/static/59d2127f1710ac592be41e29fbe77e71/0cfa7/8d873c59ca702967ba226106db29f25ca4c74bc5-1440x835.webp",
+// 	"https://uizard.io/static/5d4306fb31cb1acd99e583551daf4ceb/0cfa7/2f0a67de75a2983c83a4ae13c8a588f33749722a-1440x835.webp",
+// ];
 
-function revealImage(index: number) {
-	document.querySelector(`#slide-${index}`)?.classList.add("active");
-}
+// function revealImage(index: number) {
+// 	document.querySelector(`#slide-${index}`)?.classList.add("active");
+// }
 
-function hideImage(index: number) {
-	document
-		.querySelector(`#slide-${index}`)
-		?.classList.replace("active", "deactive");
-	setTimeout(function () {
-		document.querySelector(`#slide-${index}`)?.classList.remove("deactive");
-	}, 600);
-}
+// function hideImage(index: number) {
+// 	document
+// 		.querySelector(`#slide-${index}`)
+// 		?.classList.replace("active", "deactive");
+// 	setTimeout(function () {
+// 		document.querySelector(`#slide-${index}`)?.classList.remove("deactive");
+// 	}, 600);
+// }
+
+const heroTitle = ref(null);
 
 onMounted(() => {
 	// Register plugins first
 	gsap.registerPlugin(ScrollTrigger);
+	gsap.registerPlugin(TextPlugin);
+	gsap.registerPlugin(Flip);
+
+	gsap.to(heroTitle.value, {
+		duration: 1.5,
+		text: HeroSection.focusContent,
+		ease: "power1.out",
+	});
 
 	// Trigger animations based on Media Query
 	type MediaConditions = {
@@ -120,24 +132,25 @@ onMounted(() => {
 
 			<div gsap="reveal" class="absolute inset-0 scale-0 bg-light">
 				<div class="container mx-auto py-10">
-					<h1
-						gsap="reveal-2"
-						class="text-header font-bold leading-tight opacity-0"
-					>
+					<h1 gsap="reveal-2" class="hero-title leading-tight opacity-0">
 						{{ Industries.title }}
 					</h1>
-					<p gsap="reveal-2" class="mb-8 text-sm text-primary-500 opacity-0">
-						{{ Industries.subtitle }}
-					</p>
 					<p
 						gsap="reveal-2"
-						class="text-2xl font-medium tracking-wide opacity-0"
+						class="mb-8 text-sm font-medium text-primary-500 opacity-0"
 					>
+						{{ Industries.subtitle }}
+					</p>
+					<p gsap="reveal-2" class="text-content opacity-0">
 						{{ Industries.description }}
 					</p>
 
-					<Button gsap="reveal-2" class="mt-10 opacity-0">
-						<RouterLink to="/case-study"> View case study </RouterLink>
+					<Button
+						gsap="reveal-2"
+						class="mt-10 opacity-0"
+						@click="navigateTo('/case-study')"
+					>
+						View case study
 					</Button>
 
 					<div class="relative flex items-center justify-center py-10">
@@ -152,24 +165,37 @@ onMounted(() => {
 
 			<article
 				gsap="gradient-card"
-				class="flex h-full w-4/5 items-center p-10 backdrop-blur-sm lg:w-3/4 lg:p-20"
+				class="flex h-full w-4/5 flex-col justify-center px-8 md:px-16 lg:w-3/4"
 			>
-				<h1
-					class="text-title-lg font-bold text-light lg:text-header lg:leading-none lg:text-dark"
-				>
-					{{ HeroSection.focusContent }}
+				<h1 ref="heroTitle" class="hero-title min-h-60">
+					<!-- {{ HeroSection.focusContent }} -->
 				</h1>
+				<div>
+					<Button
+						class="mt-10 bg-transparent uppercase"
+						@click="navigateTo('/case-study')"
+					>
+						View case study
+					</Button>
+				</div>
 			</article>
 		</div>
 	</section>
 
-	<section class="sticky bg-light px-4 py-10 lg:hidden">
-		<h1 class="pb-4 text-title-lg font-bold leading-none">
+	<section class="container sticky bg-light lg:hidden">
+		<h1 class="hero-title leading-tight">
 			{{ Industries.title }}
 		</h1>
-		<p class="mb-4 text-primary-500">
+		<p ref="heroSubtitle" class="mb-8 text-sm font-medium text-primary-500">
+			{{ Industries.subtitle }}
+		</p>
+		<p class="text-content">
 			{{ Industries.description }}
 		</p>
+
+		<Button class="mt-10" @click="navigateTo('/case-study')">
+			View case study
+		</Button>
 
 		<div class="flex flex-col items-center justify-center gap-4">
 			<ProfessionCard
