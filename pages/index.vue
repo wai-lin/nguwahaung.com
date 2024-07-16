@@ -137,7 +137,7 @@ onMounted(() => {
 						muted
 						autoplay
 						preload="auto"
-						src="http://localhost:3000/videos/showcase.mp4"
+						src="https://nguwahaung.com/videos/showcase.mp4"
 					/>
 				</div>
 			</div>
