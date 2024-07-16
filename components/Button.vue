@@ -1,4 +1,15 @@
 <script lang="ts" setup>
+const props = defineProps({
+	class: {
+		type: String,
+		default: "",
+	},
+});
+
+const btnClasses = computed(() => {
+	return `btn rounded-full border-2 border-medium-dark px-4 py-2 md:px-8 md:py-4 text-dark before:bg-primary-500 hover:border-primary-500 font-medium  ${props.class}`;
+});
+
 const emit = defineEmits(["click"]);
 const handleClick = (event: MouseEvent) => {
 	emit("click", event);
@@ -6,11 +17,7 @@ const handleClick = (event: MouseEvent) => {
 </script>
 
 <template>
-	<button
-		ref="button"
-		class="btn rounded-full border-2 border-medium-dark bg-white px-8 py-4 text-dark before:bg-primary-500 hover:border-primary-500"
-		@click="handleClick"
-	>
+	<button ref="button" :class="btnClasses" @click="handleClick">
 		<span class="relative z-10"><slot></slot></span>
 	</button>
 </template>
@@ -29,12 +36,12 @@ const handleClick = (event: MouseEvent) => {
 	&:before {
 		content: "";
 		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 100%;
-		height: 100%;
-		border-radius: 30%;
-		transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 0);
+		top: 0;
+		right: 40%;
+		width: 260px;
+		height: 260px;
+		border-radius: 100%;
+		transform: translate3d(-50%, 100%, 0) scale3d(0, 0, 0);
 		transition:
 			opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1),
 			transform 0.75s cubic-bezier(0.19, 1, 0.22, 1);
@@ -49,7 +56,7 @@ const handleClick = (event: MouseEvent) => {
 		&:before {
 			opacity: 1;
 			transition-duration: 0.85s;
-			transform: translate3d(-50%, -50%, 0) scale3d(1.2, 1.2, 1.2);
+			transform: translate3d(50%, -50%, 0) scale3d(1.2, 1.2, 1.2);
 		}
 	}
 }

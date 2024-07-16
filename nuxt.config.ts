@@ -4,4 +4,5 @@ export default defineNuxtConfig({
 	devtools: { enabled: true },
 	build: { transpile: ["gsap"] },
 	modules: ["@nuxtjs/tailwindcss"],
+	css: ["~/assets/css/main.css"],
 });

@@ -1,18 +1,51 @@
 <script setup lang="ts">
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { TextPlugin } from "gsap/TextPlugin";
+
+import { ref } from "vue";
 import { Footer } from "~/data/Footer";
+
+const footerTitle = ref(null);
+const footerSubtitle = ref(null);
+const footerSection = ref(null);
+
+onMounted(() => {
+	gsap.registerPlugin(ScrollTrigger);
+	gsap.registerPlugin(TextPlugin);
+
+	const tl = gsap.timeline();
+
+	tl.to(footerTitle.value, {
+		duration: 2,
+		ease: "power3.out",
+		text: "LET'S CHAT",
+		scrollTrigger: {
+			trigger: "#footer-section",
+			start: "top+=700 center",
+			end: "bottom top+=300",
+			scrub: true,
+			// markers: true,
+		},
+		onComplete() {
+			tl.to(footerSubtitle.value, {
+				duration: 2.5,
+				ease: "power1.in",
+				text: "I'm a product designer with a passion for innovative design. I build scalable websites focused on seamless development. My expertise in branding ensures cohesive and compelling brand identities.",
+			});
+		},
+	});
+});
 </script>
 
 <template>
-	<footer class="container mx-auto mb-8 px-4 pt-20">
-		<h1 class="sm:text-title-xl my-6 text-header font-extrabold text-gray-800">
-			LET'S CHAT
-		</h1>
+	<footer id="footer-section" class="container my-8">
+		<h1
+			ref="footerTitle"
+			class="hero-title my-6 font-extrabold text-gray-800"
+		></h1>
 
-		<p class="text-body tracking-normal text-gray-600 md:text-title-md">
-			I'm a product designer with a passion for innovative design. I build
-			scalable websites focused on seamless development. My expertise in
-			branding ensures cohesive and compelling brand identities.
-		</p>
+		<p ref="footerSubtitle" class="text-content tracking-normal"></p>
 
 		<div class="my-28 grid grid-cols-6 gap-10">
 			<div
@@ -29,8 +62,8 @@ import { Footer } from "~/data/Footer";
 						<span class="text-md text-light-dark">0{{ index + 1 }}</span>
 					</div>
 				</div>
-				<hr class="my-2 border-gray-600 md:my-4" />
-				<p class="text-medium-dark">{{ card.content }}</p>
+				<hr class="my-2 border-gray-600 md:mb-8 md:mt-5" />
+				<p class="text-dark">{{ card.content }}</p>
 			</div>
 		</div>
 
@@ -41,16 +74,16 @@ import { Footer } from "~/data/Footer";
 		<div class="mt-20 flex justify-between">
 			<div class="flex gap-8">
 				<div>
-					<p class="font-light text-gray-500">Version</p>
+					<p class="mb-1 text-medium-dark">Version</p>
 					<p class="font-semibold text-gray-600">©2024 Charm</p>
 				</div>
 				<div>
-					<p class="font-light text-gray-500">Local time</p>
+					<p class="mb-1 text-medium-dark">Local time</p>
 					<p class="font-semibold text-gray-600">Bangkok 11:45 (GMT+7)</p>
 				</div>
 			</div>
 			<div>
-				<p class="font-light text-gray-500">Social</p>
+				<p class="text-medium-dark">Social</p>
 				<div class="flex gap-8 font-semibold text-gray-600">
 					<a href="#">LinkedIn</a>
 					<a href="#">Facebook</a>
