@@ -4,11 +4,11 @@
 
 @layer components {
 	.hero-title {
-		@apply text-[40px] font-semibold leading-none text-dark md:text-[60px] lg:text-header;
+		@apply text-[40px] font-semibold leading-none text-dark md:text-[60px] lg:text-header tracking-tight;
 	}
 
 	.text-content {
-		@apply text-[18px] font-medium tracking-wide text-dark md:text-[32px];
+		@apply text-[18px] font-medium text-dark md:text-[32px] tracking-tight;
 	}
 
 	.container {

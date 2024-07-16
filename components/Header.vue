@@ -6,7 +6,7 @@ console.log(Header);
 <template>
 	<header class="container absolute inset-x-0 top-0 z-50 flex h-20 w-full">
 		<div class="flex items-center">
-			<RouterLink :to="Header.brand.to">
+			<RouterLink gsap="charm" :to="Header.brand.to">
 				<Magnetic>
 					<img :src="Header.brand.img" />
 				</Magnetic>

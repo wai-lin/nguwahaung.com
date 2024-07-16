@@ -12,9 +12,42 @@ import { Showcase } from "~/data/Showcase";
 useSetSeoMeta();
 console.log(HeroSection, Professions);
 
+function skewBackdrop() {
+	let xTo = gsap.quickTo(`[gsap="hero-backdrop_img"]`, "x", {
+			duration: 0.4,
+			ease: "power3",
+		}),
+		yTo = gsap.quickTo(`[gsap="hero-backdrop_img"]`, "y", {
+			duration: 0.4,
+			ease: "power3",
+		});
+
+	document
+		.querySelector(`[gsap="hero-section"]`)
+		?.addEventListener("mousemove", (e: any) => {
+			const { clientX, clientY } = e;
+			const boundingRect = document
+				.querySelector(`[gsap="hero-backdrop_img"]`)
+				?.getBoundingClientRect();
+
+			const height = boundingRect?.height || 0;
+			const width = boundingRect?.width || 0;
+			const left = boundingRect?.left || 0;
+			const top = boundingRect?.top || 0;
+
+			const x = clientX - (left + width / 2);
+			const y = clientY - (top + height / 2);
+			console.log({ x, y });
+			xTo(Number(x || 0));
+			yTo(Number(y || 0));
+		});
+}
+
 onMounted(() => {
 	// Register plugins first
 	gsap.registerPlugin(ScrollTrigger, TextPlugin, Flip);
+
+	// skewBackdrop();
 
 	// Trigger animations based on Media Query
 	type MediaConditions = {
@@ -22,8 +55,7 @@ onMounted(() => {
 		isLargeScreen: boolean;
 		reducedAnimation: boolean;
 	};
-	const media = gsap.matchMedia();
-	media.add(
+	gsap.matchMedia().add(
 		{
 			isSmallScreen: "(max-width: 1023px)",
 			isLargeScreen: "(min-width: 1024px)",
@@ -40,12 +72,9 @@ onMounted(() => {
 
 			gsap
 				.timeline({
-					scrollTrigger: {
-						trigger: `[gsap="showcase-section"]`,
-						scrub: false,
-						snap: `labels`,
-					},
+					scrollTrigger: `[gsap="showcase-section"]`,
 				})
+				// .to(`[gsap="charm"]`, { opacity: 0 })
 				.from(`[gsap="showcase-text"]`, {
 					y: isLargeScreen ? -100 : "",
 					x: isLargeScreen ? -100 : "",
@@ -75,10 +104,11 @@ onMounted(() => {
 			class="relative h-screen w-screen snap-start overflow-hidden lg:relative"
 		>
 			<img
+				gsap="hero-backdrop_img"
 				alt=""
 				aria-hidden
 				:src="HeroSection.backdropImage"
-				class="h-full w-full object-cover object-[80%_50%] lg:object-center"
+				class="w-[200vw]"
 			/>
 			<img
 				:src="HeroSection.profileImage"
@@ -109,7 +139,7 @@ onMounted(() => {
 			class="container flex min-h-screen w-screen snap-start items-center bg-light py-10 lg:py-0"
 		>
 			<div class="grid grid-cols-4 gap-8">
-				<div gsap="showcase-text" class="col-span-4 md:col-span-2">
+				<div gsap="showcase-text" class="col-span-4 md:col-span-2 md:pr-16">
 					<h1 class="hero-title leading-tight">
 						{{ Showcase.title }}
 					</h1>
@@ -134,7 +164,6 @@ onMounted(() => {
 				>
 					<video loop muted autoplay preload="auto">
 						<source src="https://nguwahaung.com/videos/showcase.mp4" />
-						<source src="http://localhost:3000/videos/showcase.mp4" />
 					</video>
 				</div>
 			</div>
