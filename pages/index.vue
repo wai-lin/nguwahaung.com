@@ -132,13 +132,10 @@ onMounted(() => {
 					gsap="showcase-image"
 					class="col-span-4 grid place-items-center md:col-span-2"
 				>
-					<video
-						loop
-						muted
-						autoplay
-						preload="auto"
-						src="https://nguwahaung.com/videos/showcase.mp4"
-					/>
+					<video loop muted autoplay preload="auto">
+						<source src="https://nguwahaung.com/videos/showcase.mp4" />
+						<source src="http://localhost:3000/videos/showcase.mp4" />
+					</video>
 				</div>
 			</div>
 		</section>
