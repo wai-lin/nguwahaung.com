@@ -10,6 +10,21 @@ const footerTitle = ref(null);
 const footerSubtitle = ref(null);
 const footerSection = ref(null);
 
+const links = [
+	{
+		label: "LinkedIn",
+		to: "https://www.linkedin.com/in/nguwah106/",
+	},
+	{
+		label: "Behance",
+		to: "https://www.behance.net/nguwahaung",
+	},
+	{
+		label: "Instagram",
+		to: "https://www.instagram.com/charmmm91/",
+	},
+];
+
 onMounted(() => {
 	gsap.registerPlugin(ScrollTrigger);
 	gsap.registerPlugin(TextPlugin);
@@ -22,7 +37,7 @@ onMounted(() => {
 		text: "LET'S CHAT",
 		scrollTrigger: {
 			trigger: "#footer-section",
-			start: "top+=700 center",
+			start: "top+=600 center",
 			end: "bottom top+=300",
 			scrub: true,
 			// markers: true,
@@ -71,8 +86,8 @@ onMounted(() => {
 			<Button type="primary">CONTACT ME VIA EMAIL</Button>
 		</div>
 
-		<div class="mt-20 flex justify-between">
-			<div class="flex gap-8">
+		<div class="mt-20 grid grid-cols-4 gap-8">
+			<div class="col-span-4 flex gap-8 md:col-span-2">
 				<div>
 					<p class="mb-1 text-medium-dark">Version</p>
 					<p class="font-semibold text-gray-600">©2024 Charm</p>
@@ -82,12 +97,14 @@ onMounted(() => {
 					<p class="font-semibold text-gray-600">Bangkok 11:45 (GMT+7)</p>
 				</div>
 			</div>
-			<div>
-				<p class="text-medium-dark">Social</p>
-				<div class="flex gap-8 font-semibold text-gray-600">
-					<a href="#">LinkedIn</a>
-					<a href="#">Facebook</a>
-					<a href="#">Instagram</a>
+			<div class="col-span-4 md:col-span-2">
+				<div class="md:float-right">
+					<p class="mb-1 text-medium-dark">Social</p>
+					<div class="flex gap-8 font-semibold text-gray-600">
+						<Magnetic v-for="link in links" class="hover:text-primary-500">
+							<a :href="link.to" target="_blank">{{ link.label }}</a>
+						</Magnetic>
+					</div>
 				</div>
 			</div>
 		</div>

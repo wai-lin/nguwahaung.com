@@ -1,5 +1,6 @@
 export const HeroSection = {
-	backdropImage: "./images/cover-dummy.jpg",
+	backdropImage: "./images/cloud.jpg",
 	title: "",
-	focusContent: "EXPERIENCED \n PRODUCT DESIGNER \n& DEVELOPER",
+	focusContent:
+		"EXPERIENCED \n PRODUCT DESIGNER \n& DEVELOPER \n BASED IN BANGKOK",
 };
