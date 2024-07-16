@@ -16,7 +16,12 @@ console.log(Header);
 		<div
 			class="flex items-center justify-end gap-4 text-body font-medium text-dark lg:gap-10"
 		>
-			<RouterLink v-for="link in Header.links" :key="link.title" :to="link.to">
+			<RouterLink
+				v-for="link in Header.links"
+				:key="link.title"
+				:to="link.to"
+				class="hover:text-primary-500"
+			>
 				<Magnetic>{{ link.title }}</Magnetic>
 			</RouterLink>
 		</div>
