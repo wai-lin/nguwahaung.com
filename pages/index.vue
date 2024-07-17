@@ -62,7 +62,7 @@ onMounted(() => {
 	// Register plugins first
 	gsap.registerPlugin(ScrollTrigger, TextPlugin, Flip);
 
-	skewBackdrop();
+	// skewBackdrop();
 
 	// Trigger animations based on Media Query
 	type MediaConditions = {
