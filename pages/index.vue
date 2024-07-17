@@ -14,10 +14,12 @@ console.log(HeroSection, Professions);
 
 function skewBackdrop() {
 	let xTo = gsap.quickTo(`[gsap="hero-backdrop_img"]`, "x", {
+			transformOrigin: "center",
 			duration: 0.4,
 			ease: "power3",
 		}),
 		yTo = gsap.quickTo(`[gsap="hero-backdrop_img"]`, "y", {
+			transformOrigin: "center",
 			duration: 0.4,
 			ease: "power3",
 		});
@@ -35,8 +37,8 @@ function skewBackdrop() {
 			const left = boundingRect?.left || 0;
 			const top = boundingRect?.top || 0;
 
-			const centerX = width - left;
-			const centerY = height - top;
+			const centerX = width / 2;
+			const centerY = height / 2;
 
 			let x = 0,
 				y = 0;
@@ -45,11 +47,11 @@ function skewBackdrop() {
 				y: centerY - clientY,
 			};
 
-			if (cursorDiff.x < 0) x = -10;
-			else if (cursorDiff.x > 0) x = 10;
+			if (cursorDiff.x < 0) x = -20;
+			else if (cursorDiff.x > 0) x = 20;
 
-			if (cursorDiff.y < 0) y = -10;
-			else if (cursorDiff.y > 0) y = 10;
+			if (cursorDiff.y < 0) y = -20;
+			else if (cursorDiff.y > 0) y = 20;
 
 			xTo(Number(x || 0));
 			yTo(Number(y || 0));
@@ -60,7 +62,7 @@ onMounted(() => {
 	// Register plugins first
 	gsap.registerPlugin(ScrollTrigger, TextPlugin, Flip);
 
-	// skewBackdrop();
+	skewBackdrop();
 
 	// Trigger animations based on Media Query
 	type MediaConditions = {
@@ -198,7 +200,7 @@ onMounted(() => {
 				alt=""
 				aria-hidden
 				:src="HeroSection.backdropImage"
-				class="h-full w-full object-cover object-center"
+				class="h-full w-full scale-110 object-cover object-center"
 			/>
 			<img
 				gsap="hero-profile"
