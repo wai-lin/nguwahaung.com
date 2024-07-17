@@ -35,9 +35,22 @@ function skewBackdrop() {
 			const left = boundingRect?.left || 0;
 			const top = boundingRect?.top || 0;
 
-			const x = clientX - (left + width / 2);
-			const y = clientY - (top + height / 2);
-			console.log({ x, y });
+			const centerX = width - left;
+			const centerY = height - top;
+
+			let x = 0,
+				y = 0;
+			const cursorDiff = {
+				x: centerX - clientX,
+				y: centerY - clientY,
+			};
+
+			if (cursorDiff.x < 0) x = -10;
+			else if (cursorDiff.x > 0) x = 10;
+
+			if (cursorDiff.y < 0) y = -10;
+			else if (cursorDiff.y > 0) y = 10;
+
 			xTo(Number(x || 0));
 			yTo(Number(y || 0));
 		});
@@ -108,7 +121,7 @@ onMounted(() => {
 				alt=""
 				aria-hidden
 				:src="HeroSection.backdropImage"
-				class="w-[200vw]"
+				class="h-full w-full object-cover object-center"
 			/>
 			<img
 				:src="HeroSection.profileImage"
@@ -117,8 +130,7 @@ onMounted(() => {
 
 			<div class="container absolute inset-0 pt-16">
 				<h1
-					ref="heroTitle"
-					class="hero-title mt-16 min-h-0 -space-y-3 md:mt-16 md:min-h-72 lg:mt-20"
+					class="hero-title mt-16 min-h-0 -space-y-3 md:mt-16 md:min-h-72 lg:mt-28"
 				>
 					<p>EXPERIENCED</p>
 					<p>PRODUCT DESIGNER</p>
@@ -164,14 +176,17 @@ onMounted(() => {
 					gsap="showcase-image"
 					class="col-span-4 grid place-items-center md:col-span-2"
 				>
-					<img
-						src="/images/thumbnail.jpg"
+					<!-- <img
 						alt=""
+						src="/images/thumbnail.jpg"
 						class="object-cover object-left-top"
+					/> -->
+					<YouTube
+						loop
+						autoplay
+						:controls="false"
+						url="https://www.youtube.com/embed/y948Nx9FCcU?si=THkYtovYBiO6eyER&amp;controls=0"
 					/>
-					<!-- <video loop muted autoplay preload="auto">
-						<source src="https://nguwahaung.com/videos/showcase.mp4" />
-					</video> -->
 				</div>
 			</div>
 		</section>
