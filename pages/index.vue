@@ -176,17 +176,17 @@ onMounted(() => {
 					gsap="showcase-image"
 					class="col-span-4 grid place-items-center md:col-span-2"
 				>
-					<!-- <img
+					<img
 						alt=""
 						src="/images/thumbnail.jpg"
 						class="object-cover object-left-top"
-					/> -->
-					<YouTube
+					/>
+					<!-- <YouTube
 						loop
 						autoplay
 						:controls="false"
 						url="https://www.youtube.com/embed/y948Nx9FCcU?si=THkYtovYBiO6eyER&amp;controls=0"
-					/>
+					/> -->
 				</div>
 			</div>
 		</section>
