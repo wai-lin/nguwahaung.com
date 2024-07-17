@@ -125,9 +125,11 @@ onMounted(() => {
 					BASED IN BANGKOK
 				</h1>
 
-				<Button class="mt-10 bg-transparent uppercase">
-					View case study
-				</Button>
+				<div class="mt-10 inline-block">
+					<Magnetic>
+						<Button class="bg-transparent uppercase"> View case study </Button>
+					</Magnetic>
+				</div>
 			</div>
 		</section>
 
@@ -150,13 +152,11 @@ onMounted(() => {
 						{{ Showcase.description }}
 					</p>
 
-					<!-- <Button class="mt-10 uppercase" @click="navigateTo('/case-study')">
-						View case study
-					</Button> -->
-
-					<Button class="mt-10 uppercase">
-						View case study
-					</Button>
+					<div class="mt-10 inline-block">
+						<Magnetic>
+							<Button class="uppercase"> View case study </Button>
+						</Magnetic>
+					</div>
 				</div>
 
 				<div
@@ -204,7 +204,9 @@ onMounted(() => {
 			</div>
 
 			<div class="inline-block">
-				<Button type="primary">CONTACT ME VIA EMAIL</Button>
+				<Magnetic>
+					<Button type="primary">CONTACT ME VIA EMAIL</Button>
+				</Magnetic>
 			</div>
 
 			<div class="py-10" />
