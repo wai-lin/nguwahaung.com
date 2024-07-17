@@ -209,6 +209,8 @@ onMounted(() => {
 			/>
 
 			<div class="container absolute inset-0 pt-16">
+				<SmokeCursor class="absolute inset-0 h-full w-full opacity-5" />
+
 				<h1
 					gsap="hero-title"
 					class="hero-title mt-16 min-h-0 -space-y-3 md:mt-16 md:min-h-72 lg:mt-28"
