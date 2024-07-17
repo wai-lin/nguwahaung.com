@@ -100,6 +100,37 @@ onMounted(() => {
 					opacity: isLargeScreen ? 0 : "",
 					ease: "sine.out",
 				});
+
+			gsap
+				.timeline({
+					scrollTrigger: `[gsap="professions-section"]`,
+				})
+				.from(`[gsap="professions-title"]`, {
+					y: -50,
+					opacity: 0,
+					duration: 1.5,
+					ease: "bounce",
+				})
+				.from(`[gsap="profession-card_0"]`, {
+					y: -50,
+					opacity: 0,
+					ease: "bounce.out",
+				})
+				.from(`[gsap="profession-card_1"]`, {
+					y: -50,
+					opacity: 0,
+					ease: "bounce.out",
+				})
+				.from(`[gsap="profession-card_2"]`, {
+					y: -50,
+					opacity: 0,
+					ease: "bounce.out",
+				})
+				.from(`[gsap="contact-email-btn"]`, {
+					x: -100,
+					opacity: 0,
+					ease: "sine.out",
+				});
 		},
 	);
 });
@@ -219,7 +250,7 @@ onMounted(() => {
 				</div>
 			</div>
 
-			<div class="inline-block">
+			<div gsap="contact-email-btn" class="inline-block">
 				<Magnetic>
 					<Button type="primary">CONTACT ME VIA EMAIL</Button>
 				</Magnetic>
