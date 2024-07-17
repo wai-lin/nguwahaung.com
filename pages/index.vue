@@ -107,24 +107,25 @@ onMounted(() => {
 				})
 				.from(`[gsap="professions-title"]`, {
 					y: -50,
+					x: -100,
 					opacity: 0,
-					duration: 1.5,
-					ease: "bounce",
+					duration: 0.5,
+					ease: "sine.out",
 				})
 				.from(`[gsap="profession-card_0"]`, {
 					y: -50,
 					opacity: 0,
-					ease: "bounce.out",
+					ease: "sine.out",
 				})
 				.from(`[gsap="profession-card_1"]`, {
 					y: -50,
 					opacity: 0,
-					ease: "bounce.out",
+					ease: "sine.out",
 				})
 				.from(`[gsap="profession-card_2"]`, {
 					y: -50,
 					opacity: 0,
-					ease: "bounce.out",
+					ease: "sine.out",
 				})
 				.from(`[gsap="contact-email-btn"]`, {
 					x: -100,
@@ -209,7 +210,7 @@ onMounted(() => {
 				>
 					<img
 						alt=""
-						src="/images/thumbnail.jpg"
+						src="/public/images/thumbnail.jpg"
 						class="object-cover object-left-top"
 					/>
 					<!-- <YouTube
