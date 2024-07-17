@@ -1,4 +1,5 @@
 <script setup>
+// Code from: https://codepen.io/DedaloD/pen/PoJGKOb?editors=1010
 const canvas = ref();
 
 onMounted(() => {
