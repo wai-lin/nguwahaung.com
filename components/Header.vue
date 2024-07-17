@@ -6,11 +6,11 @@ console.log(Header);
 <template>
 	<header class="container absolute inset-x-0 top-0 z-50 flex h-20 w-full">
 		<div class="flex items-center">
-			<RouterLink gsap="charm" :to="Header.brand.to">
-				<Magnetic>
+			<Magnetic>
+				<button @click="navigateTo('/')">
 					<img :src="Header.brand.img" />
-				</Magnetic>
-			</RouterLink>
+				</button>
+			</Magnetic>
 		</div>
 
 		<div

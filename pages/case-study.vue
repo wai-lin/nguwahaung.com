@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
 	concepts,
 	finalKeyTakeaways,

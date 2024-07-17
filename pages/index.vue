@@ -223,7 +223,12 @@ onMounted(() => {
 
 				<div gsap="hero-study-btn" class="mt-10 inline-block">
 					<Magnetic>
-						<Button class="bg-transparent uppercase"> View case study </Button>
+						<Button
+							class="bg-transparent uppercase"
+							@click="navigateTo('/case-study')"
+						>
+							View case study
+						</Button>
 					</Magnetic>
 				</div>
 			</div>
@@ -250,7 +255,9 @@ onMounted(() => {
 
 					<div class="mt-10 inline-block">
 						<Magnetic>
-							<Button class="uppercase"> View case study </Button>
+							<Button class="uppercase" @click="navigateTo('/case-study')">
+								View case study
+							</Button>
 						</Magnetic>
 					</div>
 				</div>
