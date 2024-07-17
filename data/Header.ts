@@ -5,7 +5,7 @@ export const Header = {
 		img: "./images/logo.svg",
 	},
 	links: [
-		{ title: "Case study", to: "/case-study" },
+		{ title: "Case study", to: "/" },
 		{ title: "About me", to: "" },
 	],
 };
