@@ -125,10 +125,7 @@ onMounted(() => {
 					BASED IN BANGKOK
 				</h1>
 
-				<Button
-					class="mt-10 bg-transparent uppercase"
-					@click="navigateTo('/case-study')"
-				>
+				<Button class="mt-10 bg-transparent uppercase">
 					View case study
 				</Button>
 			</div>
@@ -153,7 +150,11 @@ onMounted(() => {
 						{{ Showcase.description }}
 					</p>
 
-					<Button class="mt-10 uppercase" @click="navigateTo('/case-study')">
+					<!-- <Button class="mt-10 uppercase" @click="navigateTo('/case-study')">
+						View case study
+					</Button> -->
+
+					<Button class="mt-10 uppercase">
 						View case study
 					</Button>
 				</div>
