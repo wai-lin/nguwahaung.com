@@ -84,6 +84,51 @@ onMounted(() => {
 			});
 
 			gsap
+				.timeline({})
+				.from(
+					`[gsap="hero-backdrop_img"]`,
+					{
+						scaleX: 1.5,
+						scaleY: 1.5,
+						duration: 1,
+						ease: "sine.out",
+					},
+					"start",
+				)
+				.from(
+					`[gsap="hero-profile"]`,
+					{
+						scale: 0.98,
+						opacity: 0.8,
+						duration: 1,
+						ease: "sine.out",
+					},
+					"start",
+				)
+				.from(
+					`[gsap="hero-title"]`,
+					{
+						y: -50,
+						x: -50,
+						opacity: 0,
+						duration: 1,
+						ease: "sine.out",
+					},
+					"start",
+				)
+				.from(
+					`[gsap="hero-study-btn"]`,
+					{
+						y: 50,
+						x: -50,
+						opacity: 0,
+						duration: 1,
+						ease: "sine.out",
+					},
+					"start",
+				);
+
+			gsap
 				.timeline({
 					scrollTrigger: `[gsap="showcase-section"]`,
 				})
@@ -156,12 +201,14 @@ onMounted(() => {
 				class="h-full w-full object-cover object-center"
 			/>
 			<img
+				gsap="hero-profile"
 				:src="HeroSection.profileImage"
 				class="absolute -bottom-1 -right-10 w-60 md:w-80 lg:right-0 lg:w-[450px]"
 			/>
 
 			<div class="container absolute inset-0 pt-16">
 				<h1
+					gsap="hero-title"
 					class="hero-title mt-16 min-h-0 -space-y-3 md:mt-16 md:min-h-72 lg:mt-28"
 				>
 					<p>EXPERIENCED</p>
@@ -170,7 +217,7 @@ onMounted(() => {
 					<p>BASED IN BANGKOK</p>
 				</h1>
 
-				<div class="mt-10 inline-block">
+				<div gsap="hero-study-btn" class="mt-10 inline-block">
 					<Magnetic>
 						<Button class="bg-transparent uppercase"> View case study </Button>
 					</Magnetic>
