@@ -112,7 +112,7 @@ onMounted(() => {
 			/>
 			<img
 				:src="HeroSection.profileImage"
-				class="absolute -bottom-1 -right-10 w-60 md:w-80 lg:right-10 lg:w-[450px]"
+				class="absolute -bottom-1 -right-10 w-60 md:w-80 lg:right-0 lg:w-[450px]"
 			/>
 
 			<div class="container absolute inset-0 pt-16">
