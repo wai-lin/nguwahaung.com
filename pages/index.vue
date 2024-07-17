@@ -112,17 +112,18 @@ onMounted(() => {
 			/>
 			<img
 				:src="HeroSection.profileImage"
-				class="absolute -bottom-1 -right-10 w-60 md:w-80 lg:right-10 lg:w-96"
+				class="absolute -bottom-1 -right-10 w-60 md:w-80 lg:right-10 lg:w-[450px]"
 			/>
 
 			<div class="container absolute inset-0 pt-16">
 				<h1
 					ref="heroTitle"
-					class="hero-title mt-16 min-h-0 md:mt-16 md:min-h-72 lg:mt-28"
+					class="hero-title mt-16 min-h-0 -space-y-3 md:mt-16 md:min-h-72 lg:mt-20"
 				>
-					EXPERIENCED <br />
-					PRODUCT DESIGNER <br />& DEVELOPER <br />
-					BASED IN BANGKOK
+					<p>EXPERIENCED</p>
+					<p>PRODUCT DESIGNER</p>
+					<p>& DEVELOPER</p>
+					<p>BASED IN BANGKOK</p>
 				</h1>
 
 				<div class="mt-10 inline-block">
