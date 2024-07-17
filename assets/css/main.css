@@ -4,14 +4,38 @@
 
 @layer components {
 	.hero-title {
-		@apply text-[40px] font-semibold leading-none text-dark md:text-[60px] lg:text-header tracking-tight;
+		@apply text-[40px] font-semibold leading-none tracking-tight text-dark md:text-[60px] lg:text-header;
+	}
+
+	.section-title {
+		@apply text-[24px] font-semibold leading-none tracking-tight text-dark md:text-[36px] lg:text-[48px];
+	}
+
+	.section-subtitle {
+		@apply text-[18px] font-semibold leading-none tracking-tight text-dark md:text-[30px] lg:text-[42px];
 	}
 
 	.text-content {
-		@apply text-[18px] font-medium text-dark md:text-[32px] tracking-tight;
+		@apply text-[18px] font-medium tracking-tight text-dark md:text-[32px];
 	}
 
 	.container {
 		@apply mx-auto w-full max-w-full items-center justify-between px-8 py-3 md:px-16 md:py-6;
+	}
+
+	.card {
+		@apply space-y-4 rounded-2xl border border-slate-200 px-8 py-6;
+	}
+
+	.card-title {
+		@apply text-xl font-medium text-primary-500;
+	}
+
+	.card-subtitle {
+		@apply text-lg font-bold text-black;
+	}
+
+	.card-content {
+		@apply text-dark;
 	}
 }

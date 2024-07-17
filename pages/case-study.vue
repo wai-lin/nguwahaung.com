@@ -1,144 +1,732 @@
 <script setup lang="ts">
-import gsap from "gsap";
-import { Flip } from "gsap/Flip";
-import { TextPlugin } from "gsap/TextPlugin";
-import { onMounted, ref } from "vue";
-import { ProjectInfo } from "~/data/CaseStudy";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+	concepts,
+	finalKeyTakeaways,
+	infos,
+	keyTakeaways,
+	learns,
+	subTesting,
+	usabilityResults,
+} from "~/data/CaseStudy";
+console.log(
+	infos,
+	concepts,
+	learns,
+	keyTakeaways,
+	usabilityResults,
+	subTesting,
+	finalKeyTakeaways,
+);
 
-const heroTitle = ref(null);
-const heroSubtitle = ref(null);
+gsap.registerPlugin(ScrollTrigger);
+
+const sectionRefs = ref([]);
+const imageRefs = ref<HTMLImageElement[] | null>(null);
+const briefRef = ref(null);
+const ecosystemRef = ref(null);
+const opportunitiesRef = ref(null);
+const competitiveRef = ref(null);
 
 onMounted(() => {
-	gsap.registerPlugin(TextPlugin);
-	gsap.registerPlugin(Flip);
+	type MediaConditions = {
+		isSmallScreen: boolean;
+		isLargeScreen: boolean;
+		reducedAnimation: boolean;
+	};
+	gsap.matchMedia().add(
+		{
+			isSmallScreen: "(max-width: 1023px)",
+			isLargeScreen: "(min-width: 1024px)",
+			reducedAnimation: "(prefers-reduced-motion: no-preference)",
+		},
+		(ctx) => {
+			const { isSmallScreen, isLargeScreen, reducedAnimation } =
+				ctx.conditions as MediaConditions;
 
-	gsap.to(heroTitle.value, { duration: 2, text: "Case Study Title" });
-	gsap.from(heroSubtitle.value, {
-		duration: 2,
-		text: "",
-		ease: "circ.in",
-	});
+			// Animate the infos section
+			const lists = document.querySelectorAll("#lists-animate");
+			lists.forEach((list) => {
+				gsap.fromTo(
+					list,
+					{ autoAlpha: 0, y: 50 },
+					{
+						scrollTrigger: {
+							trigger: list,
+							start: isLargeScreen ? "top 80%" : "top 100%",
+							end: "bottom 20%",
+							toggleActions: "play none none reverse",
+						},
+						autoAlpha: 1,
+						y: 0,
+						duration: 1,
+						stagger: 0.3,
+					},
+				);
+			});
+
+			const endLists = document.querySelectorAll("#lists-animate-end");
+			endLists.forEach((list) => {
+				gsap.fromTo(
+					list,
+					{ autoAlpha: 0, y: 50 },
+					{
+						scrollTrigger: {
+							trigger: list,
+							start: "top 100%",
+							end: "bottom 20%",
+							toggleActions: "play none none reverse",
+						},
+						autoAlpha: 1,
+						y: 0,
+						duration: 1,
+						stagger: 0.3,
+					},
+				);
+			});
+			// Animate each image
+			const images = document.querySelectorAll("img");
+			images?.forEach((image) => {
+				gsap.fromTo(
+					image,
+					{ autoAlpha: 0, x: 100 },
+					{
+						scrollTrigger: {
+							trigger: image,
+							start: "top 80%",
+							toggleActions: "play none none reverse",
+						},
+						autoAlpha: 1,
+						x: 0,
+						duration: 1,
+					},
+				);
+			});
+
+			const cards = document.querySelectorAll(".card");
+			cards?.forEach((card) => {
+				gsap.fromTo(
+					card,
+					{ autoAlpha: 0, y: 50 },
+					{
+						scrollTrigger: {
+							trigger: card,
+							start: isLargeScreen ? "top 70%" : "top 100%",
+							toggleActions: "play none none reverse",
+						},
+						autoAlpha: 1,
+						y: 0,
+						duration: 1,
+					},
+				);
+			});
+
+			const sectionHeaders = document.querySelectorAll("#section-header");
+			sectionHeaders?.forEach((sectionHeader) => {
+				gsap.fromTo(
+					sectionHeader,
+					{ autoAlpha: 0, y: 50 },
+					{
+						scrollTrigger: {
+							trigger: sectionHeader,
+							start: "top 80%",
+							toggleActions: "play none none reverse",
+						},
+						autoAlpha: 1,
+						y: 0,
+						duration: 1,
+					},
+				);
+			});
+		},
+	);
 });
 </script>
 
 <template>
 	<Header class="text-white" />
 
-	<section
-		class="flex h-screen items-center bg-[url('./images/cover.jpg')] bg-cover bg-bottom text-white"
-	>
-		<div class="px-16 text-dark">
-			<h1 ref="heroTitle" class="text-header font-extrabold"></h1>
-			<p ref="heroSubtitle" class="text-semibold text-title-lg">
-				Lorem ipsum, dolor sit amet consectetur <br />
-				adipisicing elit. Quia magnam architecto eos.
-			</p>
+	<section class="h-screen bg-light">
+		<div class="container py-20 md:py-24">
+			<div class="grid grid-cols-6 gap-0 md:gap-20">
+				<div class="col-span-6 flex flex-col justify-center md:col-span-2">
+					<div class="space-y-8">
+						<div id="lists-animate" ref="sectionRefs">
+							<h5
+								class="text-lg font-semibold uppercase text-primary-500 md:text-title-md"
+							>
+								Project
+							</h5>
+							<hr class="my-2 border-gray-300" />
+							<p class="text-dark">UNILINKS</p>
+							<p class="text-dark">
+								Personalized study abroad platform for international students.
+							</p>
+						</div>
+						<div
+							v-for="info in infos"
+							:key="info.title"
+							ref="sectionRefs"
+							id="lists-animate"
+						>
+							<h5
+								class="text-lg font-semibold uppercase text-primary-500 md:text-title-md"
+							>
+								{{ info.title }}
+							</h5>
+							<hr class="my-2 border-gray-300" />
+							<p class="text-dark">
+								{{ info.content }}
+							</p>
+						</div>
+					</div>
+				</div>
 
-			<Button class="mt-8">Learn more</Button>
+				<div class="col-span-6 mt-10 overflow-hidden md:col-span-4 md:mt-0">
+					<img
+						ref="imageRefs"
+						src="/public/images/case-study-thumbnail.jpg"
+						class="h-auto w-full object-cover object-left md:h-[580px]"
+					/>
+				</div>
+			</div>
+		</div>
+
+		<!-- The Brief -->
+		<div class="container my-20" ref="briefRef">
+			<div class="relative grid grid-cols-6 gap-10 md:gap-20">
+				<div class="col-span-6 md:col-span-2">
+					<SectionTitle mini-title="Introduction" title="The Brief" />
+				</div>
+				<div class="col-span-6 space-y-10 md:col-span-4">
+					<div class="card">
+						<h2 class="card-title">The ASK</h2>
+						<p class="card-content">
+							To create a comprehensive, user-friendly platform that streamlines
+							the study abroad process for international students, making it
+							easier for students to find, apply, and get accepted into suitable
+							programs in Thailand.
+						</p>
+					</div>
+
+					<div class="card">
+						<h2 class="card-title">Problem Statement</h2>
+						<div class="space-y-2">
+							<p class="card-subtitle">Complex Application Processes</p>
+							<p class="card-content">
+								Finding accurate information about programs, understanding
+								diverse requirements, and preparing strong applications is
+								difficult due to scattered and inconsistent information.
+							</p>
+						</div>
+
+						<div class="space-y-2">
+							<p class="card-subtitle">Managing Multiple Applications</p>
+							<p class="card-content">
+								Keeping track of multiple institutions' application statuses,
+								deadlines, and requirements can be overwhelming without
+								real-time updates and centralized management.
+							</p>
+						</div>
+
+						<div class="space-y-2">
+							<p class="card-subtitle">Financial Concerns</p>
+							<p class="card-content">
+								Students need transparent information about tuition fees,
+								scholarships, and other costs, as well as assistance in finding
+								and applying for financial aid.
+							</p>
+						</div>
+					</div>
+
+					<div class="card bg-primary-50">
+						<h2 class="card-title">Solution</h2>
+						<p class="card-content">
+							UniLinks is an innovative platform offering students a streamlined
+							process for searching, applying, and gaining acceptance into
+							academic programs. UniLinks provides continuous expert support
+							throughout the application process, ensuring document submission,
+							and facilitating communication with institutions.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="my-10 overflow-hidden">
+			<img
+				ref="imageRefs"
+				src="public/images/brief-dummy.png"
+				alt="people-group"
+				class="h-auto max-h-[500px] w-full object-cover"
+			/>
+		</div>
+
+		<!-- Ecosystem Analysis -->
+		<div class="container my-20" ref="ecosystemRef">
+			<div class="relative grid grid-cols-6 gap-10 md:gap-20">
+				<div class="col-span-6 md:col-span-2">
+					<SectionTitle
+						mini-title="Business Opportunities"
+						title="Understanding the application process"
+					/>
+				</div>
+				<div class="col-span-6 space-y-10 overflow-hidden md:col-span-4">
+					<div class="card">
+						<h2 class="card-title">Comprehensive UX Analysis</h2>
+						<p class="card-subtitle"></p>
+						<p class="card-content">
+							UniLinks conducts a comprehensive ecosystem analysis to understand
+							the educational landscape, identify key stakeholders, and assess
+							market opportunities. This analysis helps us tailor our
+							consultancy services to effectively link students with top
+							universities, ensuring a strategic fit and optimal outcomes for
+							both students and educational institutions.
+						</p>
+					</div>
+
+					<div>
+						<img
+							ref="imageRefs"
+							src="public/images/ecosystem.png"
+							class="w-full"
+						/>
+					</div>
+				</div>
+			</div>
+
+			<div class="my-10 overflow-hidden">
+				<img
+					ref="imageRefs"
+					src="public/images/ecosystem-half.png"
+					alt="people-group"
+					class="mx-auto h-auto w-5/6 object-cover"
+				/>
+			</div>
+		</div>
+
+		<!-- Business Opportunities -->
+		<div class="container my-20" ref="opportunitiesRef">
+			<div class="relative grid grid-cols-6 gap-10 md:gap-20">
+				<div class="col-span-6 md:col-span-2">
+					<SectionTitle
+						mini-title="Business Opportunities"
+						title="Make a complicated process simple"
+					/>
+				</div>
+				<div class="col-span-6 space-y-10 md:col-span-4">
+					<div class="card">
+						<h2 class="card-title">Researching Phase</h2>
+						<p class="card-subtitle">
+							Comprehensive Information Hub with Personalized Program
+							Recommendations and Interactive Tools
+						</p>
+						<p class="card-content">
+							Create a centralized platform that aggregates detailed information
+							about programs, universities, admission requirements, and student
+							reviews from various sources, utilizes an AI-driven recommendation
+							engine to suggest programs based on the student’s profile and
+							interests, and offers interactive tools like comparison charts and
+							virtual tours to help students effectively compare different
+							programs and universities.
+						</p>
+						<p class="card-subtitle">Opportunity 1</p>
+
+						<img
+							ref="imageRefs"
+							src="public/images/opportunity-1.png"
+							class="w-full"
+						/>
+					</div>
+
+					<div class="card">
+						<h2 class="card-title">Planning Phase</h2>
+						<p class="card-subtitle">
+							Integrated Application Checklist and Real-Time Tracking System
+						</p>
+						<p class="card-content">
+							Provide an integrated checklist and real-time tracking system to
+							help students stay organized with their application tasks,
+							deadlines, and document requirements, ensuring they receive timely
+							updates on their application status.
+						</p>
+						<p class="card-subtitle">Opportunity 2</p>
+
+						<img
+							ref="imageRefs"
+							src="public/images/opportunity-1.png"
+							class="w-full"
+						/>
+					</div>
+
+					<div class="card">
+						<h2 class="card-title">Applying Phase</h2>
+						<p class="card-subtitle">
+							Comprehensive Application Assistance and Document Management
+							Services
+						</p>
+						<p class="card-content">
+							Offer expert guidance and support for the application process,
+							including document review and essay writing assistance, and create
+							a secure platform for uploading, managing, and submitting
+							application documents, including translation and verification
+							services.
+						</p>
+						<p class="card-subtitle">Opportunity 3</p>
+
+						<img
+							ref="imageRefs"
+							src="public/images/opportunity-1.png"
+							class="w-full"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Competitive analysis -->
+		<div class="container my-20" ref="competitiveRef">
+			<div class="relative grid grid-cols-6 gap-10 md:gap-20">
+				<div class="col-span-6 md:col-span-2">
+					<SectionTitle
+						mini-title="Competitive analysis"
+						title="Learning from others within our space"
+					/>
+				</div>
+				<div class="col-span-6 space-y-10 md:col-span-4">
+					<div class="card">
+						<h2 class="card-title">Facebook and Instagram Pages</h2>
+						<p class="card-content">
+							Strengths: Share scholarship and university information online for
+							free, providing updates and useful tips for students.
+						</p>
+						<p class="card-content">
+							Limitations: Only share information without offering any
+							application support or personalized guidance.
+						</p>
+					</div>
+
+					<div class="card">
+						<h2 class="card-title">University Admission Agencies</h2>
+						<p class="card-content">
+							Strengths: Assist students with the admission process, including
+							consultation, document checking, and university payment handling.
+						</p>
+						<p class="card-content">
+							Limitations: The range of program choices is very limited as
+							students can only apply to universities that have partnerships
+							with the agencies.
+						</p>
+					</div>
+
+					<div class="card">
+						<h2 class="card-title">Scholarship Information Portals</h2>
+						<p class="card-content">
+							Strengths: Provide platforms where students can find various
+							scholarship opportunities, allowing them to search and gather
+							information about available scholarships.
+						</p>
+						<p class="card-content">
+							Limitations: Students must handle the entire application process
+							by themselves, as these portals do not provide application
+							assistance or support.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="my-10">
+				<img
+					ref="imageRefs"
+					src="public/images/competitive-analytics.png"
+					alt="people-group"
+					class="mx-auto h-auto w-5/6 object-cover"
+				/>
+			</div>
+		</div>
+
+		<!-- Study Abroad -->
+		<div class="container bg-primary-400 py-20">
+			<div>
+				<p class="mb-2 text-light">CONCEPT</p>
+				<h1
+					class="hero-title space-y-1 uppercase text-light md:-space-y-1 lg:-space-y-4"
+				>
+					<p>Study Abroad with</p>
+					<p>Simplicity and Assurance</p>
+				</h1>
+			</div>
+
+			<ul class="mt-14 space-y-2 md:space-y-6">
+				<li
+					id="lists-animate"
+					ref="sectionRefs"
+					v-for="concept in concepts"
+					:key="concept"
+					class="flex gap-4 text-xl text-light md:text-2xl"
+				>
+					<span>-></span> <span>{{ concept }}</span>
+				</li>
+			</ul>
+		</div>
+
+		<!-- User Research -->
+		<div class="container my-20" ref="competitiveRef">
+			<div class="relative grid grid-cols-6 gap-10 md:gap-20">
+				<div class="col-span-6 md:col-span-2">
+					<SectionTitle mini-title="Interviews" title="User Research" />
+				</div>
+				<div class="col-span-6 space-y-10 md:col-span-4">
+					<div class="card">
+						<h2 class="card-title">Interviews Conducted:</h2>
+						<p class="card-content">
+							20 in-depth interviews with international students who are
+							planning to study in Thailand or have recently completed their
+							application process so that they would be able to share their
+							experience along the application journey.
+						</p>
+						<img
+							ref="imageRefs"
+							src="public/images/interview.png"
+							class="w-full"
+						/>
+					</div>
+
+					<div class="card">
+						<h2 class="card-title">What we learned</h2>
+						<ul class="ml-4 list-disc space-y-8">
+							<li class="card-content" v-for="learn in learns">
+								<strong class="font-extrabold text-dark">
+									{{ learn.title }}
+								</strong>
+								<span class="text-medium-dark">
+									{{ learn.content }}
+								</span>
+							</li>
+						</ul>
+						<img
+							ref="imageRefs"
+							src="public/images/what-we-learned.png"
+							class="w-full"
+						/>
+					</div>
+
+					<div class="card bg-primary-50">
+						<h2 class="card-title">KEY TAKEAWAYS</h2>
+						<ul class="ml-4 list-disc space-y-8">
+							<li class="card-content" v-for="keyTakeaway in keyTakeaways">
+								<strong class="font-extrabold text-dark">
+									{{ keyTakeaway.title }}
+								</strong>
+								<span class="text-medium-dark">
+									{{ keyTakeaway.content }}
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="my-10">
+			<img
+				ref="imageRefs"
+				src="public/images/user-research.png"
+				alt="people-group"
+				class="mx-auto h-auto w-full object-cover"
+			/>
+		</div>
+
+		<div class="container py-20">
+			<div class="relative grid grid-cols-6 gap-10 md:gap-20">
+				<div class="col-span-6 md:col-span-2">
+					<SectionTitle
+						mini-title=" Analyzing research"
+						title="Distilling the research into personas"
+					/>
+				</div>
+				<div class="col-span-6 md:col-span-4">
+					<div class="card border-0">
+						<h2 class="card-title">Persona 1</h2>
+						<img
+							ref="imageRefs"
+							src="public/images/persona-1.png"
+							class="w-full"
+						/>
+					</div>
+					<div class="card border-0">
+						<h2 class="card-title">Persona 2</h2>
+						<img
+							ref="imageRefs"
+							src="public/images/persona-2.png"
+							class="w-full"
+						/>
+					</div>
+					<div class="card border-0">
+						<h2 class="card-title">Persona 3</h2>
+						<img
+							ref="imageRefs"
+							src="public/images/persona-3.png"
+							class="w-full"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- User Flow -->
+		<div class="container py-20">
+			<div id="section-header" class="md:sticky md:top-10 lg:sticky">
+				<p class="text-medium-dark">User Flow</p>
+				<h1 class="section-title">
+					How might Maria find the right study <br />
+					abroad program for her?
+				</h1>
+				<h2 class="section-subtitle md:mt-10 lg:mt-20">Wireframe</h2>
+			</div>
+		</div>
+		<div class="my-10">
+			<img
+				ref="imageRefs"
+				src="public/images/wireframe.png"
+				alt="people-group"
+				class="mx-auto h-screen w-full object-cover"
+			/>
+		</div>
+
+		<div class="container pb-10 pt-20">
+			<h1 id="section-header" class="section-title">Final UI Design</h1>
+		</div>
+		<div class="mb-10 w-screen overflow-hidden">
+			<img
+				ref="imageRefs"
+				src="public/images/final-ui-design.png"
+				alt="people-group"
+				class="mx-auto h-screen w-full object-cover"
+			/>
+		</div>
+
+		<div class="container py-20">
+			<SectionTitle
+				class="pb-10 md:block md:pb-10 lg:block"
+				mini-title="Sitemap"
+				title="Developing the app structures"
+			/>
+			<div class="sm:mt-10 md:mt-0">
+				<img
+					ref="imageRefs"
+					src="public/images/sitemap.png"
+					alt="people-group"
+					class="mx-auto h-auto w-full object-cover"
+				/>
+			</div>
+		</div>
+
+		<div class="container py-20">
+			<SectionTitle
+				class="pb-10 md:block md:pb-10 lg:block"
+				mini-title="User-flow Diagram"
+				title="From concept to reality: Beginning with user flows."
+			/>
+			<div class="sm:mt-10 md:mt-0">
+				<img
+					ref="imageRefs"
+					src="public/images/user-flow-diagram.png"
+					alt="people-group"
+					class="mx-auto h-screen w-full object-cover"
+				/>
+			</div>
+		</div>
+
+		<div class="container py-20">
+			<div class="relative grid grid-cols-6 gap-10 md:gap-20">
+				<div class="col-span-6 md:col-span-2">
+					<SectionTitle
+						mini-title="User Feedback"
+						title="Usability Test Results"
+					/>
+				</div>
+				<div class="col-span-6 space-y-6 overflow-hidden md:col-span-4">
+					<div
+						class="card"
+						v-for="usabilityResult in usabilityResults"
+						:key="usabilityResult.title"
+					>
+						<h2 class="card-title">{{ usabilityResult.title }}</h2>
+						<div class="space-y-2">
+							<div
+								class="card-content space-y-1"
+								v-for="result in usabilityResult.results"
+							>
+								<p>{{ result.content }}</p>
+								<p class="ml-4">. {{ result.score }}</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="card">
+						<h2 class="card-title">SUS Score Calculation</h2>
+						<p class="card-content font-semibold">
+							Each question scored on a scale from 1 (strongly disagree) to 5
+							(strongly agree). The average scores from all 10 users were
+							calculated for each question. The average SUS score was calculated
+							to be 87 (out of 100), indicating a high level of usability.
+						</p>
+					</div>
+
+					<div class="card bg-primary-50">
+						<h2 class="card-title">Key Takeaways from SUS Testing:</h2>
+						<ul class="ml-4 list-disc space-y-2">
+							<li class="card-content" v-for="testing in subTesting">
+								<strong class="font-extrabold text-dark">
+									{{ testing.title }}
+								</strong>
+								<span class="text-medium-dark">
+									{{ testing.content }}
+								</span>
+							</li>
+						</ul>
+					</div>
+
+					<div class="card border-0 px-0">
+						<div class="card-title">Questionnaire Sheet We Asked</div>
+						<div class="mt-10">
+							<img
+								ref="imageRefs"
+								src="public/images/questionaire.png"
+								alt="people-group"
+								class="h-auto w-full object-cover"
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Study Abroad -->
+		<div class="container overflow-hidden bg-primary-400 pt-20">
+			<div>
+				<p class="mb-2 text-light">Key Takeaways</p>
+				<h1
+					class="hero-title space-y-1 uppercase text-light md:-space-y-1 lg:-space-y-4"
+				>
+					<p>What We learn from</p>
+					<p>this project</p>
+				</h1>
+			</div>
+
+			<ul class="mt-14 space-y-2 md:space-y-6">
+				<li
+					id="lists-animate-end"
+					v-for="keyTakeaway in finalKeyTakeaways"
+					:key="keyTakeaway"
+					class="flex gap-4 text-xl text-light md:text-2xl"
+				>
+					<span>-></span> <span>{{ keyTakeaway }}</span>
+				</li>
+			</ul>
 		</div>
 	</section>
 
-	<div class="container mx-auto p-4">
-		<h1 class="py-8 text-3xl font-extrabold text-gray-800 md:text-header">
-			{{ ProjectInfo.title }}
-		</h1>
-
-		<div class="my-10 grid grid-cols-6 gap-10">
-			<div
-				class="col-span-6 p-0 sm:col-span-3 md:col-span-3 lg:col-span-2"
-				v-for="(card, index) in ProjectInfo.cards"
-			>
-				<h5
-					class="text-lg font-semibold uppercase text-primary-500 md:text-title-md"
-				>
-					{{ card.title }}
-				</h5>
-				<hr class="my-2 border-gray-600 md:my-4" />
-				<p class="text-medium-dark">{{ card.content }}</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="container mx-auto px-4 md:px-16">
-		<div class="space-y-4">
-			<h3 class="text-title-lg">Introduction</h3>
-
-			<p>
-				In this case study, we explore the redesign of a mobile banking app
-				aimed at enhancing user experience and accessibility. The goal was to
-				create a seamless, intuitive, and user-friendly interface that meets the
-				needs of diverse users.
-			</p>
-
-			<div>
-				<p>Project Overview</p>
-				<ul class="ml-8 list-disc">
-					<li>Client: XYZ Bank</li>
-					<li>Duration: 6 months</li>
-					<li>
-						Team: UX/UI Designers, Product Managers, Developers, QA Testers
-					</li>
-				</ul>
-			</div>
-
-			<h4 class="pt-10 text-title-md">Problem Statement</h4>
-
-			<p>
-				The existing mobile banking app was outdated, with a complex interface
-				and limited functionality, leading to a poor user experience and low
-				customer satisfaction.
-			</p>
-
-			<img
-				src="https://images.pexels.com/photos/6802042/pexels-photo-6802042.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-				alt="stock"
-				class="h-[400px] w-full object-cover pt-10"
-			/>
-
-			<h3 class="text-title-lg">Research</h3>
-			<h4 class="pt-10 text-title-md">User Research</h4>
-			<div>
-				<p>Surveys and Interviews:</p>
-				<ul class="ml-8 list-disc">
-					<li>
-						Conducted surveys and interviews with 200+ users to understand their
-						needs and pain points.
-					</li>
-					<li>
-						Key findings: Users found the app cluttered, difficult to navigate,
-						and lacking essential features.
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-
-	<div class="container mx-auto my-10 px-6">
-		<Magnetic>
-			<svg
-				id="Layer_2"
-				data-name="Layer 2"
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 31.5 58"
-				class="size-10"
-			>
-				<path
-					d="m20.72,22.16c2.77,0,5.55.02,8.32.03.4,0,.8.02,1.2.03.07.06.14.13.21.19-.28,1.58-.56,3.16-.83,4.75-.32,1.87-.64,3.74-.99,5.76-1.37.13-2.76-.07-4.14-.04-1.36.03-2.72,0-4.2,0-.13,8.38.12,16.72.11,25.11h-11.17v-24.91H0v-10.81h9.16c.04-.39.11-.71.11-1.02-.01-1.58-.05-3.17-.06-4.75-.01-1.62-.16-3.26.02-4.85.19-1.69.64-3.35,1.52-4.86,1.36-2.33,3.28-4.06,5.58-5.4,1.39-.81,2.94-1.25,4.52-1.3C24.28-.03,27.71.02,31.15,0c.07,0,.13.05.35.14.04,3.3-.29,6.66-.18,10.11-1.13,0-2.15.03-3.17,0-1.57-.07-3.15-.06-4.65.46-1.42.49-2.46,1.4-2.89,2.95-.3,1.08-.36,2.16-.34,3.25.04,1.69.13,3.38.2,5.07.08.06.16.13.24.19Z"
-				/>
-			</svg>
-		</Magnetic>
-	</div>
-
-	<Footer class="container" />
+	<!-- <Footer class="container" /> -->
 </template>
-
-<style>
-svg {
-	fill: #d3a369;
-	transition: fill 0.2s;
-	cursor: pointer;
-	&:hover {
-		fill: #ec4e39;
-	}
-}
-</style>
