@@ -1,5 +1,32 @@
 <script setup lang="ts">
 import { Footer } from "~/data/Footer";
+
+const dateTime = ref(new Date());
+let intervalId: number;
+
+const formattedDateTime = computed(() => {
+	const options: Intl.DateTimeFormatOptions = {
+		hour: "2-digit",
+		minute: "2-digit",
+		timeZone: "Asia/Bangkok",
+	};
+	const timeString = new Intl.DateTimeFormat("en-US", options).format(
+		dateTime.value,
+	);
+	return `Bangkok ${timeString} (GMT+7)`;
+});
+
+const updateDateTime = () => {
+	dateTime.value = new Date();
+};
+
+onMounted(() => {
+	intervalId = window.setInterval(updateDateTime, 1000);
+});
+
+onUnmounted(() => {
+	clearInterval(intervalId);
+});
 </script>
 
 <template>
@@ -12,7 +39,7 @@ import { Footer } from "~/data/Footer";
 				</article>
 				<article>
 					<p class="mb-1 text-medium-dark">{{ Footer.localTime }}</p>
-					<p class="font-semibold text-gray-600">Bangkok 11:45 (GMT+7)</p>
+					<p class="font-semibold text-gray-600">{{ formattedDateTime }}</p>
 				</article>
 			</div>
 
