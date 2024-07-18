@@ -80,10 +80,10 @@ onMounted(() => {
 			const { isSmallScreen, isLargeScreen, reducedAnimation } =
 				ctx.conditions as MediaConditions;
 
-			ScrollTrigger.defaults({
-				toggleActions: "restart pause resume pause",
-				scroller: `[gsap="scroller"]`,
-			});
+			// ScrollTrigger.defaults({
+			// 	toggleActions: "restart pause resume pause",
+			// 	scroller: `[gsap="scroller"]`,
+			// });
 
 			gsap
 				.timeline({})
@@ -132,7 +132,14 @@ onMounted(() => {
 
 			gsap
 				.timeline({
-					scrollTrigger: `[gsap="showcase-section"]`,
+					// scrollTrigger: `[gsap="showcase-section"]`,
+					scrollTrigger: {
+						trigger: "#showcase-section",
+						start: "top center",
+						end: "bottom center",
+						toggleActions: "restart pause resume pause",
+						scroller: "#scroller",
+					},
 				})
 				// .to(`[gsap="charm"]`, { opacity: 0 })
 				.from(`[gsap="showcase-text"]`, {
@@ -150,7 +157,14 @@ onMounted(() => {
 
 			gsap
 				.timeline({
-					scrollTrigger: `[gsap="professions-section"]`,
+					// scrollTrigger: `[gsap="professions-section"]`,
+					scrollTrigger: {
+						trigger: "#professions-section",
+						start: "top center",
+						end: "bottom center",
+						toggleActions: "restart pause resume pause",
+						scroller: "#scroller",
+					},
 				})
 				.from(`[gsap="professions-title"]`, {
 					y: -50,
@@ -189,6 +203,7 @@ onMounted(() => {
 
 	<div
 		gsap="scroller"
+		id="scroller"
 		class="h-screen snap-y snap-mandatory overflow-auto scroll-smooth"
 	>
 		<section
@@ -236,6 +251,7 @@ onMounted(() => {
 
 		<section
 			gsap="showcase-section"
+			id="showcase-section"
 			class="container flex min-h-screen w-screen snap-start items-center bg-light py-10 lg:py-0"
 		>
 			<div class="grid grid-cols-4 gap-8">
@@ -281,7 +297,11 @@ onMounted(() => {
 			</div>
 		</section>
 
-		<section gsap="professions-section" class="container snap-center pt-20">
+		<section
+			gsap="professions-section"
+			id="professions-section"
+			class="container snap-center pt-20"
+		>
 			<h1
 				gsap="professions-title"
 				class="hero-title my-6 font-extrabold text-gray-800"

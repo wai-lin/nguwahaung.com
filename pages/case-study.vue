@@ -607,11 +607,15 @@ onMounted(() => {
 		</div>
 
 		<div class="container py-20">
-			<SectionTitle
+			<!-- <SectionTitle
 				class="pb-10 md:block md:pb-10 lg:block"
 				mini-title="Sitemap"
 				title="Developing the app structures"
-			/>
+			/> -->
+			<div class="pb-10 md:top-10" id="section-header">
+				<p class="text-medium-dark">Sitemap</p>
+				<h1 class="section-title">Developing the app structures</h1>
+			</div>
 			<div class="sm:mt-10 md:mt-0">
 				<img
 					ref="imageRefs"
@@ -623,11 +627,12 @@ onMounted(() => {
 		</div>
 
 		<div class="container py-20">
-			<SectionTitle
-				class="pb-10 md:block md:pb-10 lg:block"
-				mini-title="User-flow Diagram"
-				title="From concept to reality: Beginning with user flows."
-			/>
+			<div class="pb-20 md:top-10" id="section-header">
+				<p class="text-medium-dark">User-flow Diagram</p>
+				<h1 class="section-title">
+					From concept to reality: Beginning with user flows.
+				</h1>
+			</div>
 			<div class="sm:mt-10 md:mt-0">
 				<img
 					ref="imageRefs"
