@@ -21,6 +21,7 @@ const updateDateTime = () => {
 };
 
 onMounted(() => {
+	if (intervalId) clearInterval(intervalId);
 	intervalId = window.setInterval(updateDateTime, 1000);
 });
 
