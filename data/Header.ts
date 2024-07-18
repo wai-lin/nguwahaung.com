@@ -6,6 +6,6 @@ export const Header = {
 	},
 	links: [
 		{ title: "Case study", to: "/case-study" },
-		{ title: "About me", to: "" },
+		{ title: "About me", scrollTo: "#professions-section" },
 	],
 };

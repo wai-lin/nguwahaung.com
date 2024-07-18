@@ -80,126 +80,153 @@ onMounted(() => {
 			const { isSmallScreen, isLargeScreen, reducedAnimation } =
 				ctx.conditions as MediaConditions;
 
-			// ScrollTrigger.defaults({
-			// 	toggleActions: "restart pause resume pause",
-			// 	scroller: `[gsap="scroller"]`,
-			// });
+			function changeHeaderOnScrollSection() {
+				function updateValues() {
+					const isOnTop = ScrollTrigger.isInViewport(`[gsap="hero-section"]`);
+					if (isOnTop) {
+						gsap.to(`[gsap="header"]`, {
+							background: "transparent",
+							duration: 0.5,
+							ease: "power2",
+						});
+					} else {
+						gsap.to(`[gsap="header"]`, {
+							background: "white",
+							duration: 0.5,
+							ease: "power2",
+						});
+					}
+				}
 
-			gsap
-				.timeline({})
-				.from(
-					`[gsap="hero-backdrop_img"]`,
-					{
-						scaleX: 1.5,
-						scaleY: 1.5,
-						duration: 1,
+				ScrollTrigger.create({
+					start: 0,
+					end: "max",
+					scroller: `[gsap="scroller"]`,
+					onUpdate: updateValues,
+				});
+
+				updateValues();
+			}
+
+			function animateHeroSection() {
+				gsap
+					.timeline()
+					.from(
+						`[gsap="hero-backdrop_img"]`,
+						{
+							scaleX: 1.5,
+							scaleY: 1.5,
+							duration: 1,
+							ease: "sine.out",
+						},
+						"start",
+					)
+					.from(
+						`[gsap="hero-profile"]`,
+						{
+							scale: 0.98,
+							opacity: 0.8,
+							duration: 1,
+							ease: "sine.out",
+						},
+						"start",
+					)
+					.from(
+						`[gsap="hero-title"]`,
+						{
+							y: -50,
+							x: -50,
+							opacity: 0,
+							duration: 1,
+							ease: "sine.out",
+						},
+						"start",
+					)
+					.from(
+						`[gsap="hero-study-btn"]`,
+						{
+							y: 50,
+							x: -50,
+							opacity: 0,
+							duration: 1,
+							ease: "sine.out",
+						},
+						"start",
+					);
+			}
+
+			function animateShowcaseSection() {
+				gsap
+					.timeline({
+						scrollTrigger: {
+							trigger: `[gsap="showcase-section"]`,
+							toggleActions: "restart pause resume pause",
+							scroller: `[gsap="scroller"]`,
+						},
+					})
+					.from(`[gsap="showcase-text"]`, {
+						y: isLargeScreen ? -100 : "",
+						x: isLargeScreen ? -100 : "",
+						opacity: isLargeScreen ? 0 : "",
 						ease: "sine.out",
-					},
-					"start",
-				)
-				.from(
-					`[gsap="hero-profile"]`,
-					{
-						scale: 0.98,
-						opacity: 0.8,
-						duration: 1,
+					})
+					.from(`[gsap="showcase-image"]`, {
+						y: isLargeScreen ? 100 : "",
+						x: isLargeScreen ? 100 : "",
+						opacity: isLargeScreen ? 0 : "",
 						ease: "sine.out",
-					},
-					"start",
-				)
-				.from(
-					`[gsap="hero-title"]`,
-					{
+					});
+			}
+
+			function animateProfessionSection() {
+				gsap
+					.timeline({
+						scrollTrigger: {
+							trigger: `[gsap="professions-section"]`,
+							toggleActions: "restart pause resume pause",
+							scroller: `[gsap="scroller"]`,
+						},
+					})
+					.from(`[gsap="professions-title"]`, {
 						y: -50,
-						x: -50,
+						x: -100,
 						opacity: 0,
-						duration: 1,
+						duration: 0.5,
 						ease: "sine.out",
-					},
-					"start",
-				)
-				.from(
-					`[gsap="hero-study-btn"]`,
-					{
-						y: 50,
-						x: -50,
+					})
+					.from(`[gsap="profession-card_0"]`, {
+						y: -50,
 						opacity: 0,
-						duration: 1,
 						ease: "sine.out",
-					},
-					"start",
-				);
+					})
+					.from(`[gsap="profession-card_1"]`, {
+						y: -50,
+						opacity: 0,
+						ease: "sine.out",
+					})
+					.from(`[gsap="profession-card_2"]`, {
+						y: -50,
+						opacity: 0,
+						ease: "sine.out",
+					})
+					.from(`[gsap="contact-email-btn"]`, {
+						x: -100,
+						opacity: 0,
+						ease: "sine.out",
+					});
+			}
 
-			gsap
-				.timeline({
-					// scrollTrigger: `[gsap="showcase-section"]`,
-					scrollTrigger: {
-						trigger: "#showcase-section",
-						start: "top center",
-						end: "bottom center",
-						toggleActions: "restart pause resume pause",
-						scroller: "#scroller",
-					},
-				})
-				// .to(`[gsap="charm"]`, { opacity: 0 })
-				.from(`[gsap="showcase-text"]`, {
-					y: isLargeScreen ? -100 : "",
-					x: isLargeScreen ? -100 : "",
-					opacity: isLargeScreen ? 0 : "",
-					ease: "sine.out",
-				})
-				.from(`[gsap="showcase-image"]`, {
-					y: isLargeScreen ? 100 : "",
-					x: isLargeScreen ? 100 : "",
-					opacity: isLargeScreen ? 0 : "",
-					ease: "sine.out",
-				});
-
-			gsap
-				.timeline({
-					// scrollTrigger: `[gsap="professions-section"]`,
-					scrollTrigger: {
-						trigger: "#professions-section",
-						start: "top center",
-						end: "bottom center",
-						toggleActions: "restart pause resume pause",
-						scroller: "#scroller",
-					},
-				})
-				.from(`[gsap="professions-title"]`, {
-					y: -50,
-					x: -100,
-					opacity: 0,
-					duration: 0.5,
-					ease: "sine.out",
-				})
-				.from(`[gsap="profession-card_0"]`, {
-					y: -50,
-					opacity: 0,
-					ease: "sine.out",
-				})
-				.from(`[gsap="profession-card_1"]`, {
-					y: -50,
-					opacity: 0,
-					ease: "sine.out",
-				})
-				.from(`[gsap="profession-card_2"]`, {
-					y: -50,
-					opacity: 0,
-					ease: "sine.out",
-				})
-				.from(`[gsap="contact-email-btn"]`, {
-					x: -100,
-					opacity: 0,
-					ease: "sine.out",
-				});
+			changeHeaderOnScrollSection();
+			animateHeroSection();
+			animateShowcaseSection();
+			animateProfessionSection();
 		},
 	);
 });
 </script>
 
 <template>
-	<Header class="text-white" />
+	<Header gsap="header" />
 
 	<div
 		gsap="scroller"
@@ -224,7 +251,9 @@ onMounted(() => {
 			/>
 
 			<div class="container absolute inset-0 pt-16">
-				<SmokeCursor class="absolute inset-0 h-full w-full opacity-5" />
+				<SmokeCursor
+					class="absolute inset-0 hidden h-full w-full opacity-5 lg:block"
+				/>
 
 				<h1
 					gsap="hero-title"
@@ -250,8 +279,8 @@ onMounted(() => {
 		</section>
 
 		<section
-			gsap="showcase-section"
 			id="showcase-section"
+			gsap="showcase-section"
 			class="container flex min-h-screen w-screen snap-start items-center bg-light py-10 lg:py-0"
 		>
 			<div class="grid grid-cols-4 gap-8">
@@ -298,8 +327,8 @@ onMounted(() => {
 		</section>
 
 		<section
-			gsap="professions-section"
 			id="professions-section"
+			gsap="professions-section"
 			class="container snap-center pt-20"
 		>
 			<h1
@@ -335,7 +364,7 @@ onMounted(() => {
 				</Magnetic>
 			</div>
 
-			<div class="py-10" />
+			<div class="py-8" />
 
 			<Footer />
 		</section>
