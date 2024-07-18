@@ -24,27 +24,27 @@ export const concepts = [
 
 export const learns = [
 	{
-		title: "Information Overload: ",
+		title: "Information Overload",
 		content:
 			"Students often feel overwhelmed by the vast amount of information available across various sources, making it difficult to find relevant and accurate details about programs and universities.",
 	},
 	{
-		title: "Personalized Guidance: ",
+		title: "Personalized Guidance",
 		content:
 			"There is a significant demand for personalized guidance to help students navigate the complex application process, including program selection, document preparation, and submission.",
 	},
 	{
-		title: "Real-Time Updates: ",
+		title: "Real-Time Updates",
 		content:
 			"Students highly value real-time updates on their application status to reduce anxiety and ensure they stay informed throughout the process.",
 	},
 	{
-		title: "Comprehensive Tools: ",
+		title: "Comprehensive Tools",
 		content:
 			"The need for comprehensive tools that combine information, recommendations, and application management in one platform was strongly emphasized.",
 	},
 	{
-		title: "Application Complexity: ",
+		title: "Application Complexity",
 		content:
 			"Many students struggle with understanding and meeting the diverse application requirements of different universities.",
 	},
@@ -52,27 +52,27 @@ export const learns = [
 
 export const keyTakeaways = [
 	{
-		title: "Centralized Platform: ",
+		title: "Centralized Platform",
 		content:
 			"There is a clear need for a centralized platform that aggregates information from multiple sources, providing a one-stop solution for students.",
 	},
 	{
-		title: "Personalized Recommendations: ",
+		title: "Personalized Recommendations",
 		content:
 			"Personalized program recommendations based on student profiles can significantly enhance the application experience and increase the chances of finding a suitable match.",
 	},
 	{
-		title: "Interactive Tools: ",
+		title: "Interactive Tools",
 		content:
 			"Interactive tools such as comparison charts and virtual tours are essential for helping students make informed decisions.",
 	},
 	{
-		title: "Application Support: ",
+		title: "Application Support",
 		content:
 			"Providing real-time tracking, document management, and expert assistance can alleviate many of the pain points experienced by students.",
 	},
 	{
-		title: "User Experience: ",
+		title: "User Experience",
 		content:
 			"Simplifying the user experience by offering clear, step-by-step guidance is crucial for ensuring student success.",
 	},

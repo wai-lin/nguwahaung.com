@@ -151,44 +151,64 @@ onMounted(() => {
 		<div class="container py-20">
 			<div class="grid grid-cols-6 gap-0 md:gap-20">
 				<div class="col-span-6 flex flex-col justify-center md:col-span-2">
-					<div class="space-y-8">
-						<div id="lists-animate" ref="sectionRefs">
-							<h5
-								class="text-lg font-semibold uppercase text-primary-500 md:text-title-md"
-							>
-								Project
-							</h5>
-							<hr class="my-2 border-gray-300" />
-							<p class="text-dark">UNILINKS</p>
-							<p class="text-dark">
+					<div>
+						<div id="section-header">
+							<p class="text-medium-dark">Case Study</p>
+							<h1 class="section-title mt-3">UniLinks</h1>
+							<p class="text-content mt-4">
 								Personalized study abroad platform for international students.
-							</p>
-						</div>
-						<div
-							v-for="info in infos"
-							:key="info.title"
-							ref="sectionRefs"
-							id="lists-animate"
-						>
-							<h5
-								class="text-lg font-semibold uppercase text-primary-500 md:text-title-md"
-							>
-								{{ info.title }}
-							</h5>
-							<hr class="my-2 border-gray-300" />
-							<p class="text-dark">
-								{{ info.content }}
 							</p>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-span-6 mt-10 overflow-hidden md:col-span-4 md:mt-0">
+				<div
+					class="col-span-6 mt-10 overflow-hidden px-0 md:col-span-4 md:mt-0 md:px-8"
+				>
 					<img
 						ref="imageRefs"
-						src="/public/images/case-study-thumbnail.jpg"
+						src="/public/images/case-study-thumbnail.svg"
 						class="h-auto w-full object-cover object-left md:h-[580px]"
 					/>
+				</div>
+			</div>
+		</div>
+
+		<div class="container bg-primary-600 px-16 py-12 text-light">
+			<div class="relative grid grid-cols-6 gap-10 md:gap-20">
+				<div class="col-span-6 md:col-span-2">
+					<h5 class="text-lg font-semibold uppercase md:text-title-md">
+						ROLE AND RESPONSIBILITY
+					</h5>
+					<hr class="my-2 border-primary-300 md:mb-8 md:mt-5" />
+					<p class="">
+						As a Product Designer, I create designs, collaborate with teams,
+						conduct user research, and develop prototypes
+					</p>
+				</div>
+				<div class="col-span-6 md:col-span-4">
+					<div class="flex gap-4">
+						<div class="px-0 md:px-8">
+							<h5 class="text-lg font-semibold uppercase md:text-title-md">
+								ROLE AND RESPONSIBILITY
+							</h5>
+							<hr class="my-2 border-primary-300 md:mb-8 md:mt-5" />
+							<p class="">
+								As a Product Designer, I create designs, collaborate with teams,
+								conduct user research, and develop prototypes
+							</p>
+						</div>
+						<div>
+							<h5 class="text-lg font-semibold uppercase md:text-title-md">
+								ROLE AND RESPONSIBILITY
+							</h5>
+							<hr class="my-2 border-primary-300 md:mb-8 md:mt-5" />
+							<p class="">
+								As a Product Designer, I create designs, collaborate with teams,
+								conduct user research, and develop prototypes
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -199,7 +219,7 @@ onMounted(() => {
 				<div class="col-span-6 md:col-span-2">
 					<SectionTitle mini-title="Introduction" title="The Brief" />
 				</div>
-				<div class="col-span-6 space-y-10 md:col-span-4">
+				<div class="col-span-6 space-y-8 md:col-span-4">
 					<div class="card">
 						<h2 class="card-title">The ASK</h2>
 						<p class="card-content">
@@ -212,35 +232,26 @@ onMounted(() => {
 
 					<div class="card">
 						<h2 class="card-title">Problem Statement</h2>
-						<div class="space-y-2">
-							<p class="card-subtitle">Complex Application Processes</p>
-							<p class="card-content">
-								Finding accurate information about programs, understanding
-								diverse requirements, and preparing strong applications is
-								difficult due to scattered and inconsistent information.
-							</p>
-						</div>
+						<p class="card-content">
+							Finding accurate information about programs, understanding diverse
+							requirements, and preparing strong applications is difficult due
+							to scattered and inconsistent information.
+						</p>
 
-						<div class="space-y-2">
-							<p class="card-subtitle">Managing Multiple Applications</p>
-							<p class="card-content">
-								Keeping track of multiple institutions' application statuses,
-								deadlines, and requirements can be overwhelming without
-								real-time updates and centralized management.
-							</p>
-						</div>
+						<p class="card-content">
+							Keeping track of multiple institutions' application statuses,
+							deadlines, and requirements can be overwhelming without real-time
+							updates and centralized management.
+						</p>
 
-						<div class="space-y-2">
-							<p class="card-subtitle">Financial Concerns</p>
-							<p class="card-content">
-								Students need transparent information about tuition fees,
-								scholarships, and other costs, as well as assistance in finding
-								and applying for financial aid.
-							</p>
-						</div>
+						<p class="card-content">
+							Students need transparent information about tuition fees,
+							scholarships, and other costs, as well as assistance in finding
+							and applying for financial aid.
+						</p>
 					</div>
 
-					<div class="card bg-primary-50">
+					<div class="card">
 						<h2 class="card-title">Solution</h2>
 						<p class="card-content">
 							UniLinks is an innovative platform offering students a streamlined
@@ -256,7 +267,7 @@ onMounted(() => {
 		<div class="my-10 overflow-hidden">
 			<img
 				ref="imageRefs"
-				src="public/images/brief-dummy.png"
+				src="public/images/brief-dummy.svg"
 				alt="people-group"
 				class="h-auto max-h-[500px] w-full object-cover"
 			/>
@@ -267,30 +278,21 @@ onMounted(() => {
 			<div class="relative grid grid-cols-6 gap-10 md:gap-20">
 				<div class="col-span-6 md:col-span-2">
 					<SectionTitle
-						mini-title="Business Opportunities"
+						mini-title="Ecosystem Opportunities"
 						title="Understanding the application process"
 					/>
 				</div>
 				<div class="col-span-6 space-y-10 overflow-hidden md:col-span-4">
 					<div class="card">
 						<h2 class="card-title">Comprehensive UX Analysis</h2>
-						<p class="card-subtitle"></p>
 						<p class="card-content">
-							UniLinks conducts a comprehensive ecosystem analysis to understand
-							the educational landscape, identify key stakeholders, and assess
-							market opportunities. This analysis helps us tailor our
+							At UniLinks, we conducts a comprehensive ecosystem analysis to
+							understand the educational landscape, identify key stakeholders,
+							and assess market opportunities. This analysis helps us tailor our
 							consultancy services to effectively link students with top
 							universities, ensuring a strategic fit and optimal outcomes for
 							both students and educational institutions.
 						</p>
-					</div>
-
-					<div>
-						<img
-							ref="imageRefs"
-							src="public/images/ecosystem.png"
-							class="w-full"
-						/>
 					</div>
 				</div>
 			</div>
@@ -300,7 +302,25 @@ onMounted(() => {
 					ref="imageRefs"
 					src="public/images/ecosystem-half.png"
 					alt="people-group"
-					class="mx-auto h-auto w-5/6 object-cover"
+					class="mx-auto h-auto w-full object-cover"
+				/>
+			</div>
+		</div>
+
+		<!-- Pre-Application Phase -->
+		<div class="container bg-primary-50 py-20">
+			<div class="pb-10 md:top-10" id="section-header">
+				<h1 class="section-title md:leading-[44px]">
+					Pre-Application <br />
+					Phase
+				</h1>
+			</div>
+			<div class="sm:mt-10 md:mt-0">
+				<img
+					ref="imageRefs"
+					src="public/images/pre-application-phase.svg"
+					alt="people-group"
+					class="mx-auto h-4/5 w-full object-cover"
 				/>
 			</div>
 		</div>
@@ -314,71 +334,29 @@ onMounted(() => {
 						title="Make a complicated process simple"
 					/>
 				</div>
-				<div class="col-span-6 space-y-10 md:col-span-4">
+				<div class="col-span-6 space-y-8 md:col-span-4">
 					<div class="card">
 						<h2 class="card-title">Researching Phase</h2>
-						<p class="card-subtitle">
-							Comprehensive Information Hub with Personalized Program
-							Recommendations and Interactive Tools
-						</p>
 						<p class="card-content">
-							Create a centralized platform that aggregates detailed information
-							about programs, universities, admission requirements, and student
-							reviews from various sources, utilizes an AI-driven recommendation
-							engine to suggest programs based on the student’s profile and
-							interests, and offers interactive tools like comparison charts and
-							virtual tours to help students effectively compare different
-							programs and universities.
+							Opportunity 1: Comprehensive Information Hub with Personalized
+							Program Recommendations and Interactive Tools.
 						</p>
-						<p class="card-subtitle">Opportunity 1</p>
-
-						<img
-							ref="imageRefs"
-							src="public/images/opportunity-1.png"
-							class="w-full"
-						/>
 					</div>
 
 					<div class="card">
 						<h2 class="card-title">Planning Phase</h2>
-						<p class="card-subtitle">
-							Integrated Application Checklist and Real-Time Tracking System
-						</p>
 						<p class="card-content">
-							Provide an integrated checklist and real-time tracking system to
-							help students stay organized with their application tasks,
-							deadlines, and document requirements, ensuring they receive timely
-							updates on their application status.
+							Opportunity 2: Integrated Application Checklist and Real-Time
+							Tracking System.
 						</p>
-						<p class="card-subtitle">Opportunity 2</p>
-
-						<img
-							ref="imageRefs"
-							src="public/images/opportunity-1.png"
-							class="w-full"
-						/>
 					</div>
 
 					<div class="card">
 						<h2 class="card-title">Applying Phase</h2>
-						<p class="card-subtitle">
-							Comprehensive Application Assistance and Document Management
-							Services
-						</p>
 						<p class="card-content">
-							Offer expert guidance and support for the application process,
-							including document review and essay writing assistance, and create
-							a secure platform for uploading, managing, and submitting
-							application documents, including translation and verification
-							services.
+							Opportunity 3: Comprehensive Application Assistance and Document
+							Management Services.
 						</p>
-						<p class="card-subtitle">Opportunity 3</p>
-
-						<img
-							ref="imageRefs"
-							src="public/images/opportunity-1.png"
-							class="w-full"
-						/>
 					</div>
 				</div>
 			</div>
@@ -393,9 +371,10 @@ onMounted(() => {
 						title="Learning from others within our space"
 					/>
 				</div>
-				<div class="col-span-6 space-y-10 md:col-span-4">
+				<div class="col-span-6 space-y-8 md:col-span-4">
 					<div class="card">
-						<h2 class="card-title">Facebook and Instagram Pages</h2>
+						<h2 class="card-title">Competitor Landscape</h2>
+						<p class="card-subtitle">Facebook and Instagram Pages</p>
 						<p class="card-content">
 							Strengths: Share scholarship and university information online for
 							free, providing updates and useful tips for students.
@@ -407,7 +386,7 @@ onMounted(() => {
 					</div>
 
 					<div class="card">
-						<h2 class="card-title">University Admission Agencies</h2>
+						<h2 class="card-subtitle">University Admission Agencies</h2>
 						<p class="card-content">
 							Strengths: Assist students with the admission process, including
 							consultation, document checking, and university payment handling.
@@ -420,7 +399,7 @@ onMounted(() => {
 					</div>
 
 					<div class="card">
-						<h2 class="card-title">Scholarship Information Portals</h2>
+						<h2 class="card-subtitle">Scholarship Information Portals</h2>
 						<p class="card-content">
 							Strengths: Provide platforms where students can find various
 							scholarship opportunities, allowing them to search and gather
@@ -440,17 +419,17 @@ onMounted(() => {
 					ref="imageRefs"
 					src="public/images/competitive-analytics.png"
 					alt="people-group"
-					class="mx-auto h-auto w-5/6 object-cover"
+					class="mx-auto h-auto w-full object-cover"
 				/>
 			</div>
 		</div>
 
 		<!-- Study Abroad -->
-		<div class="container bg-primary-400 py-20">
+		<div class="container bg-primary-500 py-20">
 			<div>
 				<p class="mb-2 text-light">CONCEPT</p>
 				<h1
-					class="hero-title space-y-1 uppercase text-light md:-space-y-1 lg:-space-y-4"
+					class="hero-title space-y-1 uppercase text-light md:-space-y-1 lg:-space-y-5"
 				>
 					<p>Study Abroad with</p>
 					<p>Simplicity and Assurance</p>
@@ -476,9 +455,9 @@ onMounted(() => {
 				<div class="col-span-6 md:col-span-2">
 					<SectionTitle mini-title="Interviews" title="User Research" />
 				</div>
-				<div class="col-span-6 space-y-10 md:col-span-4">
+				<div class="col-span-6 space-y-8 md:col-span-4">
 					<div class="card">
-						<h2 class="card-title">Interviews Conducted:</h2>
+						<h2 class="card-title">Interviews Conducted</h2>
 						<p class="card-content">
 							20 in-depth interviews with international students who are
 							planning to study in Thailand or have recently completed their
@@ -487,42 +466,47 @@ onMounted(() => {
 						</p>
 						<img
 							ref="imageRefs"
-							src="public/images/interview.png"
-							class="w-full"
+							src="public/images/interview.svg"
+							class="w-full rounded-2xl"
 						/>
 					</div>
 
 					<div class="card">
 						<h2 class="card-title">What we learned</h2>
-						<ul class="ml-4 list-disc space-y-8">
-							<li class="card-content" v-for="learn in learns">
-								<strong class="font-extrabold text-dark">
-									{{ learn.title }}
-								</strong>
-								<span class="text-medium-dark">
-									{{ learn.content }}
-								</span>
-							</li>
-						</ul>
+						<p class="card-content">
+							Students struggled with information overload. Personalized
+							guidance and real-time updates were essential. Tools like
+							comparison charts and virtual tours helped with decisions.
+							Managing documents was complex, highlighting the need for a
+							streamlined solution. These insights refined UniLinks to better
+							support students.
+						</p>
 						<img
 							ref="imageRefs"
-							src="public/images/what-we-learned.png"
+							src="public/images/what-we-learned.svg"
 							class="w-full"
 						/>
 					</div>
 
-					<div class="card bg-primary-50">
+					<div class="card">
 						<h2 class="card-title">KEY TAKEAWAYS</h2>
 						<ul class="ml-4 list-disc space-y-8">
-							<li class="card-content" v-for="keyTakeaway in keyTakeaways">
-								<strong class="font-extrabold text-dark">
-									{{ keyTakeaway.title }}
-								</strong>
-								<span class="text-medium-dark">
-									{{ keyTakeaway.content }}
-								</span>
+							<li
+								class="card-content flex items-center gap-4"
+								v-for="keyTakeaway in keyTakeaways"
+							>
+								<img
+									src="public/images/check-icon.svg"
+									class="size-8 md:size-10"
+								/>
+								<span>{{ keyTakeaway.title }}</span>
 							</li>
 						</ul>
+						<img
+							ref="imageRefs"
+							src="public/images/what-we-learned-2.svg"
+							class="w-full"
+						/>
 					</div>
 				</div>
 			</div>
@@ -541,32 +525,29 @@ onMounted(() => {
 			<div class="relative grid grid-cols-6 gap-10 md:gap-20">
 				<div class="col-span-6 md:col-span-2">
 					<SectionTitle
-						mini-title=" Analyzing research"
+						mini-title="Analyzing research"
 						title="Distilling the research into personas"
 					/>
 				</div>
-				<div class="col-span-6 md:col-span-4">
-					<div class="card border-0">
-						<h2 class="card-title">Persona 1</h2>
+				<div class="col-span-6 space-y-8 md:col-span-4">
+					<div class="">
 						<img
 							ref="imageRefs"
-							src="public/images/persona-1.png"
+							src="public/images/persona-1.svg"
 							class="w-full"
 						/>
 					</div>
-					<div class="card border-0">
-						<h2 class="card-title">Persona 2</h2>
+					<div class="">
 						<img
 							ref="imageRefs"
-							src="public/images/persona-2.png"
+							src="public/images/persona-2.svg"
 							class="w-full"
 						/>
 					</div>
-					<div class="card border-0">
-						<h2 class="card-title">Persona 3</h2>
+					<div class="">
 						<img
 							ref="imageRefs"
-							src="public/images/persona-3.png"
+							src="public/images/persona-3.svg"
 							class="w-full"
 						/>
 					</div>
@@ -575,8 +556,8 @@ onMounted(() => {
 		</div>
 
 		<!-- User Flow -->
-		<div class="container py-20">
-			<div id="section-header" class="md:sticky md:top-10 lg:sticky">
+		<div class="container bg-gray-50 py-20">
+			<div id="section-header">
 				<p class="text-medium-dark">User Flow</p>
 				<h1 class="section-title">
 					How might Maria find the right study <br />
@@ -584,45 +565,125 @@ onMounted(() => {
 				</h1>
 				<h2 class="section-subtitle md:mt-10 lg:mt-20">Wireframe</h2>
 			</div>
-		</div>
-		<div class="my-10">
-			<img
-				ref="imageRefs"
-				src="public/images/wireframe.png"
-				alt="people-group"
-				class="mx-auto h-screen w-full object-cover"
-			/>
-		</div>
-
-		<div class="container pb-10 pt-20">
-			<h1 id="section-header" class="section-title">Final UI Design</h1>
-		</div>
-		<div class="mb-10 w-screen overflow-hidden">
-			<img
-				ref="imageRefs"
-				src="public/images/final-ui-design.png"
-				alt="people-group"
-				class="mx-auto h-screen w-full object-cover"
-			/>
-		</div>
-
-		<div class="container py-20">
-			<!-- <SectionTitle
-				class="pb-10 md:block md:pb-10 lg:block"
-				mini-title="Sitemap"
-				title="Developing the app structures"
-			/> -->
-			<div class="pb-10 md:top-10" id="section-header">
-				<p class="text-medium-dark">Sitemap</p>
-				<h1 class="section-title">Developing the app structures</h1>
-			</div>
-			<div class="sm:mt-10 md:mt-0">
+			<div class="mt-10">
 				<img
 					ref="imageRefs"
-					src="public/images/sitemap.png"
-					alt="people-group"
-					class="mx-auto h-auto w-full object-cover"
+					src="public/images/wireframe.svg"
+					alt="wireframe"
+					class="mx-auto h-screen w-full object-cover"
 				/>
+			</div>
+
+			<!-- Hi-Fi Design -->
+			<div class="space-y-32">
+				<div id="section-header" class="md:my-10 lg:my-20">
+					<h2 class="section-subtitle">HI-FI Design</h2>
+				</div>
+				<div
+					id="section-header"
+					class="relative grid grid-cols-6 gap-10 md:gap-20"
+				>
+					<div class="col-span-6 md:col-span-2">
+						<p class="text-content">
+							Monica logs into UniLinks and accesses the personalized program
+							recommendation feature.
+						</p>
+					</div>
+					<div
+						class="col-span-6 mt-10 overflow-hidden px-0 md:col-span-4 md:mt-0 md:px-8"
+					>
+						<img
+							ref="imageRefs"
+							src="/public/images/sign-up.svg"
+							class="h-auto w-full object-cover object-left md:h-[580px]"
+						/>
+					</div>
+				</div>
+
+				<div
+					id="section-header"
+					class="relative grid grid-cols-6 gap-10 md:gap-20"
+				>
+					<div class="col-span-6 md:col-span-2">
+						<p class="text-content">
+							She fills out her academic background, interests, and career
+							goals. The system-driven recommendation engine generates a list of
+							suitable programs.
+						</p>
+					</div>
+					<div
+						class="col-span-6 mt-10 overflow-hidden px-0 md:col-span-4 md:mt-0 md:px-8"
+					>
+						<img
+							ref="imageRefs"
+							src="/public/images/unilink-1.svg"
+							class="h-auto w-full object-cover object-left md:h-[580px]"
+						/>
+					</div>
+				</div>
+
+				<div
+					id="section-header"
+					class="relative grid grid-cols-6 gap-10 md:gap-20"
+				>
+					<div class="col-span-6 md:col-span-2">
+						<p class="text-content">
+							She can easily compare courses between different universities.
+						</p>
+					</div>
+					<div
+						class="col-span-6 mt-10 overflow-hidden px-0 md:col-span-4 md:mt-0 md:px-8"
+					>
+						<img
+							ref="imageRefs"
+							src="/public/images/unilink-2.svg"
+							class="h-auto w-full object-cover object-left md:h-[580px]"
+						/>
+					</div>
+				</div>
+
+				<div
+					id="section-header"
+					class="relative grid grid-cols-6 gap-10 md:gap-20"
+				>
+					<div class="col-span-6 md:col-span-2">
+						<p class="text-content">
+							She decides to book a consultation session with UniLinks and fills
+							out the consultation form.
+						</p>
+					</div>
+					<div
+						class="col-span-6 mt-10 overflow-hidden px-0 md:col-span-4 md:mt-0 md:px-8"
+					>
+						<img
+							ref="imageRefs"
+							src="/public/images/unilink-3.svg"
+							class="h-auto w-full object-cover object-left md:h-[580px]"
+						/>
+					</div>
+				</div>
+
+				<div
+					id="section-header"
+					class="relative grid grid-cols-6 gap-10 md:gap-20"
+				>
+					<div class="col-span-6 md:col-span-2">
+						<p class="text-content">
+							Finally, Monica discovers programs that match her interests,
+							explores detailed descriptions, takes virtual tours, and adds her
+							favorites to a shortlist.
+						</p>
+					</div>
+					<div
+						class="col-span-6 mt-10 overflow-hidden px-0 md:col-span-4 md:mt-0 md:px-8"
+					>
+						<img
+							ref="imageRefs"
+							src="/public/images/unilink-4.svg"
+							class="h-auto w-full object-cover object-left md:h-[580px]"
+						/>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -636,9 +697,24 @@ onMounted(() => {
 			<div class="sm:mt-10 md:mt-0">
 				<img
 					ref="imageRefs"
-					src="public/images/user-flow-diagram.png"
+					src="public/images/user-flow-diagram.svg"
 					alt="people-group"
-					class="mx-auto h-screen w-full object-cover"
+					class="mx-auto h-auto w-full object-cover"
+				/>
+			</div>
+		</div>
+
+		<div class="container py-20">
+			<div class="md:top-10" id="section-header">
+				<p class="text-medium-dark">Sitemap</p>
+				<h1 class="section-title">Developing the app structures</h1>
+			</div>
+			<div class="sm:mt-10 md:mt-0">
+				<img
+					ref="imageRefs"
+					src="public/images/sitemap.svg"
+					alt="people-group"
+					class="mx-auto h-auto w-full object-cover"
 				/>
 			</div>
 		</div>
@@ -646,74 +722,55 @@ onMounted(() => {
 		<div class="container py-20">
 			<div class="relative grid grid-cols-6 gap-10 md:gap-20">
 				<div class="col-span-6 md:col-span-2">
-					<SectionTitle
-						mini-title="User Feedback"
-						title="Usability Test Results"
-					/>
+					<SectionTitle mini-title="Usability Test" title="Key Takeaways" />
 				</div>
 				<div class="col-span-6 space-y-6 overflow-hidden md:col-span-4">
-					<div
-						class="card"
-						v-for="usabilityResult in usabilityResults"
-						:key="usabilityResult.title"
-					>
-						<h2 class="card-title">{{ usabilityResult.title }}</h2>
-						<div class="space-y-2">
-							<div
-								class="card-content space-y-1"
-								v-for="result in usabilityResult.results"
-							>
-								<p>{{ result.content }}</p>
-								<p class="ml-4">. {{ result.score }}</p>
-							</div>
-						</div>
-					</div>
-
 					<div class="card">
-						<h2 class="card-title">SUS Score Calculation</h2>
+						<h2 class="card-title mb-14">Key Takeaways</h2>
+						<p class="card-subtitle">Learnability</p>
 						<p class="card-content font-semibold">
-							Each question scored on a scale from 1 (strongly disagree) to 5
-							(strongly agree). The average scores from all 10 users were
-							calculated for each question. The average SUS score was calculated
-							to be 87 (out of 100), indicating a high level of usability.
+							The system is easy to learn, but an initial tutorial could help
+							some users.
 						</p>
 					</div>
 
-					<div class="card bg-primary-50">
-						<h2 class="card-title">Key Takeaways from SUS Testing:</h2>
-						<ul class="ml-4 list-disc space-y-2">
-							<li class="card-content" v-for="testing in subTesting">
-								<strong class="font-extrabold text-dark">
-									{{ testing.title }}
-								</strong>
-								<span class="text-medium-dark">
-									{{ testing.content }}
-								</span>
-							</li>
-						</ul>
+					<div class="card">
+						<p class="card-subtitle">Findability</p>
+						<p class="card-content font-semibold">
+							Most users found information easily, though the homepage and menu
+							structure could be simplified.
+						</p>
 					</div>
 
-					<div class="card border-0 px-0">
-						<div class="card-title">Questionnaire Sheet We Asked</div>
-						<div class="mt-10">
-							<img
-								ref="imageRefs"
-								src="public/images/questionaire.png"
-								alt="people-group"
-								class="h-auto w-full object-cover"
-							/>
-						</div>
+					<div class="card">
+						<p class="card-subtitle">Accessibility</p>
+						<p class="card-content font-semibold">
+							The system is accessible across devices, but adding more
+							accessibility options could enhance the experience.
+						</p>
+					</div>
+
+					<div class="card">
+						<p class="card-subtitle">Aesthetic</p>
+						<p class="card-content font-semibold">
+							Users found the design visually appealing and consistent, with
+							minor suggestions for modern design enhancements.
+						</p>
+						<p class="card-content font-semibold">
+							The platform scored high on usability, with users finding it
+							intuitive and easy to use.
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<!-- Study Abroad -->
-		<div class="container overflow-hidden bg-primary-400 py-20">
+		<div class="container overflow-hidden bg-primary-500 py-20">
 			<div>
 				<p class="mb-2 text-light">Key Takeaways</p>
 				<h1
-					class="hero-title space-y-1 uppercase text-light md:-space-y-1 lg:-space-y-4"
+					class="hero-title space-y-1 uppercase text-light md:-space-y-1 lg:-space-y-5"
 				>
 					<p>What We learn from</p>
 					<p>this project</p>

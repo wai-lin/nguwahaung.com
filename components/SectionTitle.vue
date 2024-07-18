@@ -19,7 +19,7 @@ const baseClass = `'md:sticky lg:sticky md:top-20 md:pb-60 ${props.class}'`;
 
 <template>
 	<div :class="baseClass" id="section-header">
-		<p class="text-medium-dark">{{ miniTitle }}</p>
-		<h1 class="section-title">{{ title }}</h1>
+		<p class="mb-2.5 tracking-tighter text-medium-dark">{{ miniTitle }}</p>
+		<h1 class="section-title md:leading-[44px]">{{ title }}</h1>
 	</div>
 </template>
