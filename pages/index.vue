@@ -58,6 +58,8 @@ function skewBackdrop() {
 		});
 }
 
+const email = "nguwah106@gmail.com";
+
 onMounted(() => {
 	// Register plugins first
 	gsap.registerPlugin(ScrollTrigger, TextPlugin, Flip);
@@ -313,7 +315,7 @@ onMounted(() => {
 				>
 					<img
 						alt=""
-						src="/public/images/thumbnail.jpg"
+						src="/public/images/case-study-thumbnail.jpg"
 						class="object-cover object-left-top"
 					/>
 					<!-- <YouTube
@@ -360,7 +362,21 @@ onMounted(() => {
 
 			<div gsap="contact-email-btn" class="inline-block">
 				<Magnetic>
-					<Button type="primary">CONTACT ME VIA EMAIL</Button>
+					<Button
+						type="primary"
+						@click="
+							navigateTo('https://gmail.com/', {
+								external: true,
+								open: {
+									target: '_blank',
+									windowFeatures: {
+										popup: true,
+									},
+								},
+							})
+						"
+						>CONTACT ME VIA EMAIL</Button
+					>
 				</Magnetic>
 			</div>
 

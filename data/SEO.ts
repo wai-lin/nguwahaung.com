@@ -1,7 +1,7 @@
 export const seoMeta = reactive({
-	title: "",
+	title: "Ngu Wah Aung",
 	imageUrl: "",
-	description: "",
+	description: "EXPERIENCED PRODUCT DESIGNER & DEVELOPER BASED IN BANGKOK",
 });
 
 export function useSetSeoMeta() {
