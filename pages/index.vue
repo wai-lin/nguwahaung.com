@@ -315,7 +315,7 @@ onMounted(() => {
 				>
 					<img
 						alt=""
-						src="/public/images/case-study-thumbnail.jpg"
+						src="/public/images/case-study-thumbnail.svg"
 						class="object-cover object-left-top"
 					/>
 					<!-- <YouTube
