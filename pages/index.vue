@@ -366,7 +366,9 @@ onMounted(() => {
 
 			<div class="py-8" />
 
-			<Footer />
+			<div>
+				<Footer />
+			</div>
 		</section>
 	</div>
 </template>

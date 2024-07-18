@@ -147,7 +147,7 @@ onMounted(() => {
 <template>
 	<Header class="text-white" />
 
-	<section class="h-screen bg-light">
+	<section class="bg-light">
 		<div class="container py-20 md:py-24">
 			<div class="grid grid-cols-6 gap-0 md:gap-20">
 				<div class="col-span-6 flex flex-col justify-center md:col-span-2">
@@ -709,7 +709,7 @@ onMounted(() => {
 		</div>
 
 		<!-- Study Abroad -->
-		<div class="container overflow-hidden bg-primary-400 pt-20">
+		<div class="container overflow-hidden bg-primary-400 py-20">
 			<div>
 				<p class="mb-2 text-light">Key Takeaways</p>
 				<h1
@@ -733,5 +733,5 @@ onMounted(() => {
 		</div>
 	</section>
 
-	<!-- <Footer class="container" /> -->
+	<Footer class="container my-0" />
 </template>
