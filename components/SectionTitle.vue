@@ -14,7 +14,7 @@ const props = defineProps({
 	},
 });
 
-const baseClass = `'md:sticky lg:sticky md:top-10 md:pb-60 ${props.class}'`;
+const baseClass = `'md:sticky lg:sticky md:top-20 md:pb-60 ${props.class}'`;
 </script>
 
 <template>

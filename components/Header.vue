@@ -19,7 +19,7 @@ function scrollTo(to: string) {
 </script>
 
 <template>
-	<header class="container absolute inset-x-0 top-0 z-50 flex h-20 w-full">
+	<header class="container absolute inset-x-0 top-0 z-50 flex h-16 w-full">
 		<div class="flex items-center">
 			<Magnetic>
 				<RouterLink to="/">

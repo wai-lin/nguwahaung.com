@@ -145,10 +145,10 @@ onMounted(() => {
 </script>
 
 <template>
-	<Header class="text-white" />
+	<Header class="sticky bg-light text-white shadow-sm" />
 
 	<section class="bg-light">
-		<div class="container py-20 md:py-24">
+		<div class="container py-20">
 			<div class="grid grid-cols-6 gap-0 md:gap-20">
 				<div class="col-span-6 flex flex-col justify-center md:col-span-2">
 					<div class="space-y-8">
