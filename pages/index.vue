@@ -292,7 +292,7 @@ onMounted(() => {
 					</h1>
 					<p
 						ref="heroSubtitle"
-						class="mb-8 text-sm font-medium text-primary-500"
+						class="mb-8 text-xl font-medium leading-[18px] text-primary-500"
 					>
 						{{ Showcase.subtitle }}
 					</p>
@@ -349,13 +349,13 @@ onMounted(() => {
 				>
 					<div class="flex justify-between">
 						<h5
-							class="text-lg font-semibold uppercase text-primary-500 md:text-title-md"
+							class="text-xl font-semibold uppercase leading-[18px] text-primary-500 md:text-title-md"
 						>
 							{{ card.title }}
 						</h5>
 						<span class="text-md text-light-dark">0{{ index + 1 }}</span>
 					</div>
-					<hr class="my-2 border-gray-600 md:mb-8 md:mt-5" />
+					<hr class="my-2 border-[#dfdfdf] md:mb-8 md:mt-5" />
 					<p class="text-dark">{{ card.content }}</p>
 				</div>
 			</div>

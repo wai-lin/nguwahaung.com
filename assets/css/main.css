@@ -16,7 +16,7 @@
 	}
 
 	.text-content {
-		@apply text-[18px] font-medium tracking-tight text-dark md:text-[32px];
+		@apply text-[18px] font-medium tracking-tight text-dark md:text-[24px];
 	}
 
 	.container {
@@ -36,10 +36,10 @@
 	}
 
 	.card-content {
-		@apply text-[18px] font-normal tracking-[-0.5px] text-dark md:text-[32px] md:leading-[44px];
+		@apply text-[18px] font-normal tracking-[-0.5px] text-dark md:text-[24px] md:leading-[36px];
 	}
 
-	.card img {
-		@apply rounded-2xl;
+	.card-image {
+		/* @apply rounded-2xl; */
 	}
 }

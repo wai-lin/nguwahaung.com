@@ -148,15 +148,16 @@ onMounted(() => {
 	<Header class="sticky bg-light text-white shadow-sm" />
 
 	<section class="bg-light">
-		<div class="container py-20">
+		<div class="container py-12">
 			<div class="grid grid-cols-6 gap-0 md:gap-20">
-				<div class="col-span-6 flex flex-col justify-center md:col-span-2">
+				<div class="col-span-6 md:col-span-2">
 					<div>
 						<div id="section-header">
-							<p class="text-medium-dark">Case Study</p>
-							<h1 class="section-title mt-3">UniLinks</h1>
+							<h1 class="hero-title mt-3 uppercase">UniLinks</h1>
+							<p class="text-content mt-8">Case Study —</p>
 							<p class="text-content mt-4">
-								Personalized study abroad platform for international students.
+								Personalized platform for international students, streamlining
+								the application process.
 							</p>
 						</div>
 					</div>
@@ -168,44 +169,37 @@ onMounted(() => {
 					<img
 						ref="imageRefs"
 						src="/public/images/case-study-thumbnail.svg"
-						class="h-auto w-full object-cover object-left md:h-[580px]"
+						class="h-auto w-full object-cover object-left"
 					/>
 				</div>
 			</div>
 		</div>
 
 		<div class="container bg-primary-600 px-16 py-12 text-light">
-			<div class="relative grid grid-cols-6 gap-10 md:gap-20">
+			<div class="relative grid grid-cols-6 gap-0 md:gap-20">
 				<div class="col-span-6 md:col-span-2">
 					<h5 class="text-lg font-semibold uppercase md:text-title-md">
 						ROLE AND RESPONSIBILITY
 					</h5>
-					<hr class="my-2 border-primary-300 md:mb-8 md:mt-5" />
-					<p class="">
+					<p class="mt-4">
 						As a Product Designer, I create designs, collaborate with teams,
 						conduct user research, and develop prototypes
 					</p>
 				</div>
 				<div class="col-span-6 md:col-span-4">
-					<div class="flex gap-4">
+					<div class="flex justify-between gap-4">
 						<div class="px-0 md:px-8">
 							<h5 class="text-lg font-semibold uppercase md:text-title-md">
-								ROLE AND RESPONSIBILITY
+								Team MEMBERS
 							</h5>
-							<hr class="my-2 border-primary-300 md:mb-8 md:mt-5" />
-							<p class="">
-								As a Product Designer, I create designs, collaborate with teams,
-								conduct user research, and develop prototypes
-							</p>
+							<p class="mt-4">Charm, Yan Naing, Wai Lin, Ye Yint</p>
 						</div>
 						<div>
 							<h5 class="text-lg font-semibold uppercase md:text-title-md">
-								ROLE AND RESPONSIBILITY
+								TOOLS
 							</h5>
-							<hr class="my-2 border-primary-300 md:mb-8 md:mt-5" />
-							<p class="">
-								As a Product Designer, I create designs, collaborate with teams,
-								conduct user research, and develop prototypes
+							<p class="mt-4">
+								Figma, FigJam, Miro, Sketch, Adobe Creative Suite
 							</p>
 						</div>
 					</div>
@@ -232,23 +226,25 @@ onMounted(() => {
 
 					<div class="card">
 						<h2 class="card-title">Problem Statement</h2>
-						<p class="card-content">
-							Finding accurate information about programs, understanding diverse
-							requirements, and preparing strong applications is difficult due
-							to scattered and inconsistent information.
-						</p>
+						<div class="space-y-4">
+							<p class="card-content">
+								Finding accurate information about programs, understanding
+								diverse requirements, and preparing strong applications is
+								difficult due to scattered and inconsistent information.
+							</p>
 
-						<p class="card-content">
-							Keeping track of multiple institutions' application statuses,
-							deadlines, and requirements can be overwhelming without real-time
-							updates and centralized management.
-						</p>
+							<p class="card-content">
+								Keeping track of multiple institutions' application statuses,
+								deadlines, and requirements can be overwhelming without
+								real-time updates and centralized management.
+							</p>
 
-						<p class="card-content">
-							Students need transparent information about tuition fees,
-							scholarships, and other costs, as well as assistance in finding
-							and applying for financial aid.
-						</p>
+							<p class="card-content">
+								Students need transparent information about tuition fees,
+								scholarships, and other costs, as well as assistance in finding
+								and applying for financial aid.
+							</p>
+						</div>
 					</div>
 
 					<div class="card">
@@ -295,15 +291,6 @@ onMounted(() => {
 						</p>
 					</div>
 				</div>
-			</div>
-
-			<div class="my-10 overflow-hidden">
-				<img
-					ref="imageRefs"
-					src="public/images/ecosystem-half.png"
-					alt="people-group"
-					class="mx-auto h-auto w-full object-cover"
-				/>
 			</div>
 		</div>
 
@@ -375,41 +362,48 @@ onMounted(() => {
 					<div class="card">
 						<h2 class="card-title">Competitor Landscape</h2>
 						<p class="card-subtitle">Facebook and Instagram Pages</p>
-						<p class="card-content">
-							Strengths: Share scholarship and university information online for
-							free, providing updates and useful tips for students.
-						</p>
-						<p class="card-content">
-							Limitations: Only share information without offering any
-							application support or personalized guidance.
-						</p>
+						<div class="space-y-4">
+							<p class="card-content">
+								Strengths: Share scholarship and university information online
+								for free, providing updates and useful tips for students.
+							</p>
+							<p class="card-content">
+								Limitations: Only share information without offering any
+								application support or personalized guidance.
+							</p>
+						</div>
 					</div>
 
 					<div class="card">
 						<h2 class="card-subtitle">University Admission Agencies</h2>
-						<p class="card-content">
-							Strengths: Assist students with the admission process, including
-							consultation, document checking, and university payment handling.
-						</p>
-						<p class="card-content">
-							Limitations: The range of program choices is very limited as
-							students can only apply to universities that have partnerships
-							with the agencies.
-						</p>
+						<div class="space-y-4">
+							<p class="card-content">
+								Strengths: Assist students with the admission process, including
+								consultation, document checking, and university payment
+								handling.
+							</p>
+							<p class="card-content">
+								Limitations: The range of program choices is very limited as
+								students can only apply to universities that have partnerships
+								with the agencies.
+							</p>
+						</div>
 					</div>
 
 					<div class="card">
 						<h2 class="card-subtitle">Scholarship Information Portals</h2>
-						<p class="card-content">
-							Strengths: Provide platforms where students can find various
-							scholarship opportunities, allowing them to search and gather
-							information about available scholarships.
-						</p>
-						<p class="card-content">
-							Limitations: Students must handle the entire application process
-							by themselves, as these portals do not provide application
-							assistance or support.
-						</p>
+						<div class="space-y-4">
+							<p class="card-content">
+								Strengths: Provide platforms where students can find various
+								scholarship opportunities, allowing them to search and gather
+								information about available scholarships.
+							</p>
+							<p class="card-content">
+								Limitations: Students must handle the entire application process
+								by themselves, as these portals do not provide application
+								assistance or support.
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -464,11 +458,13 @@ onMounted(() => {
 							application process so that they would be able to share their
 							experience along the application journey.
 						</p>
-						<img
-							ref="imageRefs"
-							src="public/images/interview.svg"
-							class="w-full rounded-2xl"
-						/>
+						<div class="card-image">
+							<img
+								ref="imageRefs"
+								src="public/images/interview.svg"
+								class="w-full rounded-2xl"
+							/>
+						</div>
 					</div>
 
 					<div class="card">
@@ -481,11 +477,13 @@ onMounted(() => {
 							streamlined solution. These insights refined UniLinks to better
 							support students.
 						</p>
-						<img
-							ref="imageRefs"
-							src="public/images/what-we-learned.svg"
-							class="w-full"
-						/>
+						<div class="card-image">
+							<img
+								ref="imageRefs"
+								src="public/images/what-we-learned.svg"
+								class="w-full"
+							/>
+						</div>
 					</div>
 
 					<div class="card">
@@ -498,15 +496,18 @@ onMounted(() => {
 								<img
 									src="public/images/check-icon.svg"
 									class="size-8 md:size-10"
+									ref="checkIcon"
 								/>
 								<span>{{ keyTakeaway.title }}</span>
 							</li>
 						</ul>
-						<img
-							ref="imageRefs"
-							src="public/images/what-we-learned-2.svg"
-							class="w-full"
-						/>
+						<div class="card-image">
+							<img
+								ref="imageRefs"
+								src="public/images/what-we-learned-2.svg"
+								class="w-full"
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -592,11 +593,13 @@ onMounted(() => {
 					<div
 						class="col-span-6 mt-10 overflow-hidden px-0 md:col-span-4 md:mt-0 md:px-8"
 					>
-						<img
-							ref="imageRefs"
-							src="/public/images/sign-up.svg"
-							class="h-auto w-full object-cover object-left md:h-[580px]"
-						/>
+						<div class="card-image">
+							<img
+								ref="imageRefs"
+								src="/public/images/sign-up.png"
+								class="h-auto w-full object-cover md:h-auto"
+							/>
+						</div>
 					</div>
 				</div>
 
@@ -614,11 +617,13 @@ onMounted(() => {
 					<div
 						class="col-span-6 mt-10 overflow-hidden px-0 md:col-span-4 md:mt-0 md:px-8"
 					>
-						<img
-							ref="imageRefs"
-							src="/public/images/unilink-1.svg"
-							class="h-auto w-full object-cover object-left md:h-[580px]"
-						/>
+						<div class="card-image">
+							<img
+								ref="imageRefs"
+								src="/public/images/unilink-1.png"
+								class="h-auto w-full object-cover object-left"
+							/>
+						</div>
 					</div>
 				</div>
 
@@ -634,11 +639,13 @@ onMounted(() => {
 					<div
 						class="col-span-6 mt-10 overflow-hidden px-0 md:col-span-4 md:mt-0 md:px-8"
 					>
-						<img
-							ref="imageRefs"
-							src="/public/images/unilink-2.svg"
-							class="h-auto w-full object-cover object-left md:h-[580px]"
-						/>
+						<div class="card-image">
+							<img
+								ref="imageRefs"
+								src="/public/images/unilink-2.png"
+								class="h-auto w-full object-cover object-left"
+							/>
+						</div>
 					</div>
 				</div>
 
@@ -655,11 +662,13 @@ onMounted(() => {
 					<div
 						class="col-span-6 mt-10 overflow-hidden px-0 md:col-span-4 md:mt-0 md:px-8"
 					>
-						<img
-							ref="imageRefs"
-							src="/public/images/unilink-3.svg"
-							class="h-auto w-full object-cover object-left md:h-[580px]"
-						/>
+						<div class="card-image">
+							<img
+								ref="imageRefs"
+								src="/public/images/unilink-3.png"
+								class="h-auto w-full object-cover object-left"
+							/>
+						</div>
 					</div>
 				</div>
 
@@ -677,11 +686,13 @@ onMounted(() => {
 					<div
 						class="col-span-6 mt-10 overflow-hidden px-0 md:col-span-4 md:mt-0 md:px-8"
 					>
-						<img
-							ref="imageRefs"
-							src="/public/images/unilink-4.svg"
-							class="h-auto w-full object-cover object-left md:h-[580px]"
-						/>
+						<div class="card-image">
+							<img
+								ref="imageRefs"
+								src="/public/images/unilink-4.png"
+								class="h-auto w-full object-cover object-left"
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -697,7 +708,7 @@ onMounted(() => {
 			<div class="sm:mt-10 md:mt-0">
 				<img
 					ref="imageRefs"
-					src="public/images/user-flow-diagram.svg"
+					src="public/images/userflow.jpg"
 					alt="people-group"
 					class="mx-auto h-auto w-full object-cover"
 				/>
@@ -709,10 +720,10 @@ onMounted(() => {
 				<p class="text-medium-dark">Sitemap</p>
 				<h1 class="section-title">Developing the app structures</h1>
 			</div>
-			<div class="sm:mt-10 md:mt-0">
+			<div class="mt-20">
 				<img
 					ref="imageRefs"
-					src="public/images/sitemap.svg"
+					src="public/images/sitemap.jpg"
 					alt="people-group"
 					class="mx-auto h-auto w-full object-cover"
 				/>
@@ -722,13 +733,13 @@ onMounted(() => {
 		<div class="container py-20">
 			<div class="relative grid grid-cols-6 gap-10 md:gap-20">
 				<div class="col-span-6 md:col-span-2">
-					<SectionTitle mini-title="Usability Test" title="Key Takeaways" />
+					<SectionTitle mini-title="Feedback" title="Usability Test Results" />
 				</div>
 				<div class="col-span-6 space-y-6 overflow-hidden md:col-span-4">
 					<div class="card">
 						<h2 class="card-title mb-14">Key Takeaways</h2>
 						<p class="card-subtitle">Learnability</p>
-						<p class="card-content font-semibold">
+						<p class="card-content">
 							The system is easy to learn, but an initial tutorial could help
 							some users.
 						</p>
@@ -736,7 +747,7 @@ onMounted(() => {
 
 					<div class="card">
 						<p class="card-subtitle">Findability</p>
-						<p class="card-content font-semibold">
+						<p class="card-content">
 							Most users found information easily, though the homepage and menu
 							structure could be simplified.
 						</p>
@@ -744,7 +755,7 @@ onMounted(() => {
 
 					<div class="card">
 						<p class="card-subtitle">Accessibility</p>
-						<p class="card-content font-semibold">
+						<p class="card-content">
 							The system is accessible across devices, but adding more
 							accessibility options could enhance the experience.
 						</p>
@@ -752,11 +763,11 @@ onMounted(() => {
 
 					<div class="card">
 						<p class="card-subtitle">Aesthetic</p>
-						<p class="card-content font-semibold">
+						<p class="card-content">
 							Users found the design visually appealing and consistent, with
 							minor suggestions for modern design enhancements.
 						</p>
-						<p class="card-content font-semibold">
+						<p class="card-content">
 							The platform scored high on usability, with users finding it
 							intuitive and easy to use.
 						</p>
@@ -766,7 +777,7 @@ onMounted(() => {
 		</div>
 
 		<!-- Study Abroad -->
-		<div class="container overflow-hidden bg-primary-500 py-20">
+		<div class="container overflow-hidden bg-primary-500 py-28">
 			<div>
 				<p class="mb-2 text-light">Key Takeaways</p>
 				<h1
@@ -792,3 +803,9 @@ onMounted(() => {
 
 	<Footer class="container my-0" />
 </template>
+
+<style scoped>
+.card-image img {
+	/* border-radius: 16px; */
+}
+</style>
