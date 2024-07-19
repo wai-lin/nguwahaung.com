@@ -191,10 +191,10 @@ export const subTesting = [
 ];
 
 export const finalKeyTakeaways = [
-	"Students struggled with fragmented information, confirming our belief that a centralized platform would simplify their research.",
-	"Personalized program suggestions were even more valuable than anticipated, greatly engaging students. ",
-	"Real-time application status updates significantly reduced student anxiety, proving more critical than we initially thought. ",
-	"Tools like comparison charts and virtual tours were used extensively, highlighting their essential role in decision-making.",
-	"Contrary to our initial assumption, managing and submitting documents was a major concern for students, making our solution highly appreciated. ",
-	"These insights helped us refine UniLinks to better address student needs and improve their university application experience.",
+	"Centralized platform simplified student research.",
+	"Personalized program suggestions engaged students.",
+	"Real-time status updates reduced student anxiety.",
+	"Comparison charts and virtual tours were essential..",
+	"Managing and submitting documents was a major concern.",
+	"Insights refined UniLinks to improve the application experience.",
 ];

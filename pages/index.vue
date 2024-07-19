@@ -315,8 +315,8 @@ onMounted(() => {
 				>
 					<img
 						alt=""
-						src="/public/images/case-study-thumbnail.svg"
-						class="object-cover object-left-top"
+						src="/public/images/home-thumbnail.png"
+						class="h-auto w-full object-cover object-left-top"
 					/>
 					<!-- <YouTube
 						loop

@@ -35,7 +35,7 @@ function scrollTo(to: string) {
 				<RouterLink
 					v-if="link?.to"
 					:to="link.to"
-					class="hover:text-primary-500"
+					class="capitalize hover:text-primary-500"
 				>
 					<Magnetic>{{ link.title }}</Magnetic>
 				</RouterLink>
@@ -43,7 +43,7 @@ function scrollTo(to: string) {
 				<a
 					v-if="link?.scrollTo"
 					:href="link.scrollTo"
-					class="hover:text-primary-500"
+					class="capitalize hover:text-primary-500"
 					@click.prevent="scrollTo(link.scrollTo)"
 				>
 					<Magnetic>{{ link.title }}</Magnetic>

@@ -323,7 +323,7 @@ onMounted(() => {
 				</div>
 				<div class="col-span-6 space-y-8 md:col-span-4">
 					<div class="card">
-						<h2 class="card-title">Researching Phase</h2>
+						<h2 class="card-subtitle">Researching Phase</h2>
 						<p class="card-content">
 							Opportunity 1: Comprehensive Information Hub with Personalized
 							Program Recommendations and Interactive Tools.
@@ -331,7 +331,7 @@ onMounted(() => {
 					</div>
 
 					<div class="card">
-						<h2 class="card-title">Planning Phase</h2>
+						<h2 class="card-subtitle">Planning Phase</h2>
 						<p class="card-content">
 							Opportunity 2: Integrated Application Checklist and Real-Time
 							Tracking System.
@@ -339,7 +339,7 @@ onMounted(() => {
 					</div>
 
 					<div class="card">
-						<h2 class="card-title">Applying Phase</h2>
+						<h2 class="card-subtitle">Applying Phase</h2>
 						<p class="card-content">
 							Opportunity 3: Comprehensive Application Assistance and Document
 							Management Services.
@@ -361,7 +361,7 @@ onMounted(() => {
 				<div class="col-span-6 space-y-8 md:col-span-4">
 					<div class="card">
 						<h2 class="card-title">Competitor Landscape</h2>
-						<p class="card-subtitle">Facebook and Instagram Pages</p>
+						<p class="card-subtitle pt-8">Facebook and Instagram Pages</p>
 						<div class="space-y-4">
 							<p class="card-content">
 								Strengths: Share scholarship and university information online
@@ -451,7 +451,7 @@ onMounted(() => {
 				</div>
 				<div class="col-span-6 space-y-8 md:col-span-4">
 					<div class="card">
-						<h2 class="card-title">Interviews Conducted</h2>
+						<h2 class="card-subtitle">Interviews Conducted</h2>
 						<p class="card-content">
 							20 in-depth interviews with international students who are
 							planning to study in Thailand or have recently completed their
@@ -468,7 +468,7 @@ onMounted(() => {
 					</div>
 
 					<div class="card">
-						<h2 class="card-title">What we learned</h2>
+						<h2 class="card-subtitle">What we learned</h2>
 						<p class="card-content">
 							Students struggled with information overload. Personalized
 							guidance and real-time updates were essential. Tools like
@@ -487,7 +487,7 @@ onMounted(() => {
 					</div>
 
 					<div class="card">
-						<h2 class="card-title">KEY TAKEAWAYS</h2>
+						<h2 class="card-subtitle">KEY TAKEAWAYS</h2>
 						<ul class="ml-4 list-disc space-y-8">
 							<li
 								class="card-content flex items-center gap-4"
@@ -783,8 +783,8 @@ onMounted(() => {
 				<h1
 					class="hero-title space-y-1 uppercase text-light md:-space-y-1 lg:-space-y-5"
 				>
-					<p>What We learn from</p>
-					<p>this project</p>
+					<p>What We learn</p>
+					<p>from this project</p>
 				</h1>
 			</div>
 
@@ -804,8 +804,4 @@ onMounted(() => {
 	<Footer class="container my-0" />
 </template>
 
-<style scoped>
-.card-image img {
-	/* border-radius: 16px; */
-}
-</style>
+<style scoped></style>
